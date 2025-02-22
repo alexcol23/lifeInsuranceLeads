@@ -1,18 +1,20 @@
-import { HeroSection } from '@/components/sections/hero';
-import { BenefitsSection } from '@/components/sections/benefits';
+import { HeroSection } from '@/components/sections/Hero';
+import { Benefits } from '@/components/sections/Benefits';
 import { HowItWorks } from '@/components/sections/HowItWorks';
-import { TestimonialsSection } from '@/components/sections/testimonials';
 import { BlogSection } from '@/components/sections/BlogSection';
+import { FaqSection } from '@/components/sections/FAQ';
+import { TestimonialsSection } from '@/components/sections/Testimonials';
 import { CtaSection } from '@/components/sections/CtaSection';
 
 export default function Home() {
   return (
-    <main className="pt-16">
+    <main className="min-h-screen">
       <HeroSection />
-      <BenefitsSection />
+      <Benefits />
       <HowItWorks />
       <TestimonialsSection />
-      <BlogSection />       
+      <BlogSection />
+      <FaqSection />
       <CtaSection />
     </main>
   );

@@ -1,65 +1,62 @@
 import { render, screen } from '@testing-library/react'
-import { HowItWorks } from '@/components/sections/HowItWorks'
+import { HowItWorksSection } from '@/components/sections/HowItWorks'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, className, ...props }: any) => {
-      const { initial, animate, whileInView, viewport, transition, ...rest } = props;
-      return (
-        <div className={className} {...rest}>
-          {children}
-        </div>
-      );
-    },
+    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   },
 }))
 
-describe('How It Works Section', () => {
-  it('renders the main heading', () => {
-    render(<HowItWorks />)
-    const heading = screen.getByText(/How Our AI Finds Your Perfect Plan/i)
-    expect(heading).toBeInTheDocument()
+// Mock useTranslations hook
+jest.mock('@/hooks/useTranslations', () => ({
+  useTranslations: () => ({
+    t: (key: string) => key,
+  }),
+}))
+
+describe('HowItWorks Section', () => {
+  it('renders all steps', () => {
+    render(<HowItWorksSection />)
+    
+    const steps = screen.getAllByTestId('step-card')
+    expect(steps).toHaveLength(4)
   })
 
-  it('renders all steps in the process', () => {
-    render(<HowItWorks />)
+  it('renders step titles', () => {
+    render(<HowItWorksSection />)
     
-    const steps = [
-      'Fill Out the Form',
-      'Get AI Recommendations',
-      'Review Your Options',
-      'Connect with an Advisor'
+    const titles = [
+      'howItWorks.steps.profile.title',
+      'howItWorks.steps.analysis.title',
+      'howItWorks.steps.recommendations.title',
+      'howItWorks.steps.support.title'
     ]
 
-    steps.forEach(step => {
-      const stepElement = screen.getByText(step)
-      expect(stepElement).toBeInTheDocument()
+    titles.forEach(title => {
+      expect(screen.getByText(title)).toBeInTheDocument()
     })
   })
 
-  it('renders AI-related content in step descriptions', () => {
-    render(<HowItWorks />)
+  it('renders step descriptions', () => {
+    render(<HowItWorksSection />)
     
-    const aiDescriptions = [
-      /help our AI understand your needs/i,
-      /Our advanced AI agent analyzes your profile/i,
-      /AI-recommended options/i
+    const descriptions = [
+      'howItWorks.steps.profile.description',
+      'howItWorks.steps.analysis.description',
+      'howItWorks.steps.recommendations.description',
+      'howItWorks.steps.support.description'
     ]
 
-    aiDescriptions.forEach(description => {
-      const element = screen.getByText(description)
-      expect(element).toBeInTheDocument()
+    descriptions.forEach(description => {
+      expect(screen.getByText(description)).toBeInTheDocument()
     })
   })
 
-  it('renders step numbers', () => {
-    render(<HowItWorks />)
+  it('renders section title and description', () => {
+    render(<HowItWorksSection />)
     
-    // Verificar que se muestran los números del 1 al 4
-    for (let i = 1; i <= 4; i++) {
-      const numberElement = screen.getByText(i.toString())
-      expect(numberElement).toBeInTheDocument()
-    }
+    expect(screen.getByText('howItWorks.title')).toBeInTheDocument()
+    expect(screen.getByText('howItWorks.description')).toBeInTheDocument()
   })
 })

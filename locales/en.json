@@ -184,5 +184,49 @@
         }
       }
     }
+  },
+  "benefits": {
+    "title": "The Smart Way to Choose Insurance",
+    "description": "Experience the power of AI-driven insurance recommendations that make finding the right coverage easier than ever.",
+    "items": {
+      "aiAnalysis": {
+        "title": "AI-Powered Analysis",
+        "description": "Our advanced AI analyzes multiple insurance providers to find the perfect plans that match your specific needs and budget."
+      },
+      "smartRecommendations": {
+        "title": "Smart Recommendations",
+        "description": "Receive data-driven, personalized recommendations based on objective analysis of thousands of insurance plans."
+      },
+      "expertSupport": {
+        "title": "Expert Support",
+        "description": "Access to licensed insurance advisors who can help you understand your AI-recommended options and make the best choice."
+      },
+      "costEffective": {
+        "title": "Cost-Effective Options",
+        "description": "Our AI helps you find the most cost-effective plans that provide the coverage you need without overpaying."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "How Our AI Finds Your Perfect Plan",
+    "description": "A simple, intelligent process to match you with the right insurance coverage",
+    "steps": {
+      "fillForm": {
+        "title": "Fill Out the Form",
+        "description": "Tell us about yourself to help our AI understand your needs and preferences."
+      },
+      "aiRecommendations": {
+        "title": "Get AI Recommendations",
+        "description": "Our advanced AI agent analyzes your profile and selects the best insurance options tailored for you."
+      },
+      "reviewOptions": {
+        "title": "Review Your Options",
+        "description": "Receive a personalized list of insurance plans that perfectly match your needs and budget."
+      },
+      "connectAdvisor": {
+        "title": "Connect with an Advisor",
+        "description": "Optionally schedule a call with a licensed expert to discuss your AI-recommended options."
+      }
+    }
   }
 }

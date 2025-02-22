@@ -21,7 +21,7 @@ type PathValue<T, P extends Path<T>> =
     ? T[P]
     : never;
 
-type TranslationKey = Path<typeof en>;
+export type TranslationKey = Path<typeof en>;
 
 export function useTranslations() {
   const { language } = useLanguage();

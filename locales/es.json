@@ -250,5 +250,49 @@
       "previous": "Anterior",
       "submit": "Obtener Recomendaciones"
     }
+  },
+  "benefits": {
+    "title": "La Forma Inteligente de Elegir un Seguro",
+    "description": "Experimenta el poder de las recomendaciones de seguros impulsadas por IA que facilitan encontrar la cobertura adecuada.",
+    "items": {
+      "aiAnalysis": {
+        "title": "Análisis Impulsado por IA",
+        "description": "Nuestra IA avanzada analiza múltiples proveedores de seguros para encontrar los planes perfectos que se ajusten a tus necesidades y presupuesto."
+      },
+      "smartRecommendations": {
+        "title": "Recomendaciones Inteligentes",
+        "description": "Recibe recomendaciones personalizadas basadas en el análisis objetivo de miles de planes de seguros."
+      },
+      "expertSupport": {
+        "title": "Soporte Experto",
+        "description": "Acceso a asesores de seguros licenciados que pueden ayudarte a entender tus opciones recomendadas por IA y tomar la mejor decisión."
+      },
+      "costEffective": {
+        "title": "Opciones Rentables",
+        "description": "Nuestra IA te ayuda a encontrar los planes más rentables que proporcionan la cobertura que necesitas sin pagar de más."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo Nuestra IA Encuentra Tu Plan Perfecto",
+    "description": "Un proceso simple e inteligente para conectarte con la cobertura de seguro adecuada",
+    "steps": {
+      "fillForm": {
+        "title": "Completa el Formulario",
+        "description": "Cuéntanos sobre ti para ayudar a nuestra IA a entender tus necesidades y preferencias."
+      },
+      "aiRecommendations": {
+        "title": "Obtén Recomendaciones de IA",
+        "description": "Nuestro agente de IA avanzado analiza tu perfil y selecciona las mejores opciones de seguro adaptadas para ti."
+      },
+      "reviewOptions": {
+        "title": "Revisa Tus Opciones",
+        "description": "Recibe una lista personalizada de planes de seguro que coinciden perfectamente con tus necesidades y presupuesto."
+      },
+      "connectAdvisor": {
+        "title": "Conéctate con un Asesor",
+        "description": "Opcionalmente programa una llamada con un experto licenciado para discutir tus opciones recomendadas por IA."
+      }
+    }
   }
 }

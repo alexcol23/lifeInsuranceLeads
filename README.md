@@ -2,8 +2,6 @@
 
 A modern, responsive landing page built with Next.js and Tailwind CSS for a life insurance lead generation service.
 
-![LeadsBolt Preview](public/images/hero-bg.jpg)
-
 ## 🚀 Features
 
 - **Modern Design**: Clean and professional UI with attention to visual hierarchy
@@ -137,7 +135,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- Your Name - Initial work - [YourGitHub](https://github.com/yourusername)
+- Your Name - Initial work - [YourGitHub](https://github.com/alexcol23)
 
 ## 🙏 Acknowledgments
 

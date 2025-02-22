@@ -1,30 +1,30 @@
 'use client';
 
-import { Shield, Heart, DollarSign, Users } from 'lucide-react';
+import { Brain, Shield, DollarSign, Users } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 
 // Extraer los datos de beneficios a un objeto constante
 const BENEFITS_DATA = [
   {
-    icon: Shield,
-    title: 'Comprehensive Coverage',
-    description: 'Get complete protection for you and your loved ones with our comprehensive life insurance plans.'
+    icon: Brain,
+    title: 'AI-Powered Analysis',
+    description: 'Our advanced AI analyzes multiple insurance providers to find the perfect plans that match your specific needs and budget.'
   },
   {
-    icon: DollarSign,
-    title: 'Affordable Plans',
-    description: 'Find budget-friendly insurance options that provide excellent value for your investment.'
+    icon: Shield,
+    title: 'Smart Recommendations',
+    description: 'Receive data-driven, personalized recommendations based on objective analysis of thousands of insurance plans.'
   },
   {
     icon: Users,
-    title: 'Expert Guidance',
-    description: 'Receive personalized advice from our experienced insurance professionals.'
+    title: 'Expert Support',
+    description: 'Access to licensed insurance advisors who can help you understand your AI-recommended options and make the best choice.'
   },
   {
-    icon: Heart,
-    title: 'Fast & Easy Process',
-    description: 'Quick and simple application process with minimal paperwork required.'
+    icon: DollarSign,
+    title: 'Cost-Effective Options',
+    description: 'Our AI helps you find the most cost-effective plans that provide the coverage you need without overpaying.'
   }
 ];
 
@@ -63,10 +63,10 @@ export const Benefits = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
-            Why Choose Our Insurance
+            The Smart Way to Choose Insurance
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover the advantages of securing your family's future with our comprehensive life insurance solutions.
+            Experience the power of AI-driven insurance recommendations that make finding the right coverage easier than ever.
           </p>
         </div>
         

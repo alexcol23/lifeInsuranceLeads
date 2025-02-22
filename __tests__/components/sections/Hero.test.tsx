@@ -11,8 +11,17 @@ jest.mock('@/hooks/use-toast', () => ({
 describe('Hero Section', () => {
   it('renders the main heading', () => {
     render(<HeroSection />)
-    const heading = screen.getByText(/Secure Your Family's/i)
+    const heading = screen.getByText(/Find Your Perfect/i)
     expect(heading).toBeInTheDocument()
+  })
+
+  it('renders AI-related content', () => {
+    render(<HeroSection />)
+    const aiTag = screen.getByText(/AI-Powered Insurance Recommendations/i)
+    const aiDescription = screen.getByText(/Let our AI analyze your profile/i)
+    
+    expect(aiTag).toBeInTheDocument()
+    expect(aiDescription).toBeInTheDocument()
   })
 
   it('renders the lead capture form', () => {
@@ -20,7 +29,7 @@ describe('Hero Section', () => {
     const nameInput = screen.getByLabelText(/Full Name/i)
     const emailInput = screen.getByLabelText(/Email Address/i)
     const phoneInput = screen.getByLabelText(/Phone Number/i)
-    const submitButton = screen.getByRole('button', { name: /Get Your Free Quote/i })
+    const submitButton = screen.getByRole('button', { name: /Get AI-Powered Recommendations/i })
     
     expect(nameInput).toBeInTheDocument()
     expect(emailInput).toBeInTheDocument()

@@ -22,16 +22,26 @@ describe('Benefits Section', () => {
     
     // Verificar que se renderizan todos los beneficios
     const benefitTitles = [
-      'Comprehensive Coverage',
-      'Affordable Plans',
-      'Expert Guidance',
-      'Fast & Easy Process'
+      'AI-Powered Analysis',
+      'Smart Recommendations',
+      'Expert Support',
+      'Cost-Effective Options'
     ]
 
     benefitTitles.forEach(title => {
       const titleElement = screen.getByText(title)
       expect(titleElement).toBeInTheDocument()
     })
+  })
+
+  it('renders AI-related content', () => {
+    render(<Benefits />)
+    
+    const heading = screen.getByText(/The Smart Way to Choose Insurance/i)
+    const description = screen.getByText(/Experience the power of AI-driven insurance recommendations/i)
+    
+    expect(heading).toBeInTheDocument()
+    expect(description).toBeInTheDocument()
   })
 
   it('renders benefit icons', () => {

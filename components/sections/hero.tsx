@@ -1,45 +1,16 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Shield } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Shield, Sparkles } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export function HeroSection() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-  const { toast } = useToast();
+  const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('/api/submit-lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Success!",
-          description: "We'll be in touch with you shortly.",
-        });
-        setFormData({ name: '', email: '', phone: '' });
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
-    }
+  const handleGetStarted = () => {
+    router.push('/get-recommendations');
   };
 
   return (
@@ -60,71 +31,69 @@ export function HeroSection() {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-white">
-            <div className="inline-flex items-center rounded-lg bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-semibold mb-8 border border-white/10">
-              🎉 <span className="ml-2">Protect your loved ones today</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
-              Secure Your Family's
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"> Future</span>
-            </h1>
-            <p className="text-2xl font-medium text-white/90 mb-12 leading-relaxed max-w-xl">
-              Get comprehensive life insurance coverage tailored to your needs. 
-              Start with a free quote today.
-            </p>
-            <div className="backdrop-blur-md bg-white/10 p-8 rounded-2xl border border-white/10 shadow-xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-white/90">Full Name</label>
-                  <Input
-                    id="name"
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="bg-white/20 border-white/20 text-white placeholder:text-white/50 h-12 text-lg"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-white/90">Email Address</label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="bg-white/20 border-white/20 text-white placeholder:text-white/50 h-12 text-lg"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-white/90">Phone Number</label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="(555) 123-4567"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    required
-                    className="bg-white/20 border-white/20 text-white placeholder:text-white/50 h-12 text-lg"
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-12 text-lg font-semibold transition-all duration-300 ease-out hover:scale-[1.02]"
-                >
-                  Get Your Free Quote
-                </Button>
-              </form>
-            </div>
-          </div>
-          <div className="hidden lg:flex justify-center items-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-white"
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center rounded-lg bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-semibold mb-8 border border-white/10"
+            >
+              <Sparkles className="w-4 h-4 mr-2" /> 
+              <span>AI-Powered Insurance Recommendations</span>
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight"
+            >
+              Find Your Perfect
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"> Insurance Plan</span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-2xl font-medium text-white/90 mb-12 leading-relaxed max-w-xl"
+            >
+              Let our AI analyze your profile and recommend the best life insurance plans tailored to your unique needs.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+            >
+              <Button 
+                size="lg" 
+                onClick={handleGetStarted}
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-14 px-8 text-lg font-semibold transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg"
+              >
+                Get AI-Powered Recommendations
+              </Button>
+              <p className="text-sm text-white/70 mt-4">
+                Takes only 2 minutes • Free personalized analysis
+              </p>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="hidden lg:flex justify-center items-center"
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-              <Shield className="w-96 h-96 text-white relative" />
+              <div className="relative flex items-center justify-center">
+                <Shield className="w-96 h-96 text-white" />
+                <Sparkles className="w-24 h-24 text-blue-400 absolute top-1/4 right-1/4 animate-pulse" />
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

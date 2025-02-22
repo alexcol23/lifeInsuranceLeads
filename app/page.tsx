@@ -1,10 +1,9 @@
-import { HeroSection } from '@/components/sections/Hero';
-import { BenefitsSection } from '@/components/sections/Benefits';
+import { HeroSection } from '@/components/sections/hero';
+import { BenefitsSection } from '@/components/sections/benefits';
 import { HowItWorksSection } from '@/components/sections/HowItWorks';
-import { BlogSection } from '@/components/sections/BlogSection';
-import { FaqSection } from '@/components/sections/FAQ';
 import { TestimonialsSection } from '@/components/sections/Testimonials';
-import { CtaSection } from '@/components/sections/CtaSection';
+import { FAQSection } from '@/components/sections/FAQ';
+import { CTASection } from '@/components/sections/CTA';
 
 export default function Home() {
   return (
@@ -13,9 +12,8 @@ export default function Home() {
       <BenefitsSection />
       <HowItWorksSection />
       <TestimonialsSection />
-      <BlogSection />
-      <FaqSection />
-      <CtaSection />
+      <FAQSection />
+      <CTASection />
     </main>
   );
 }

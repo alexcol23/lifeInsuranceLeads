@@ -1,50 +1,72 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useTranslations } from '@/hooks/useTranslations';
+import type { TranslationKey } from '@/hooks/useTranslations';
 
-const faqs = [
+const FAQ_DATA = [
   {
-    question: "What types of life insurance do you offer?",
-    answer: "We offer various types of life insurance including Term Life, Whole Life, and Universal Life Insurance. Each type has its own benefits and features to suit different needs and financial goals.",
+    id: 'howWorks',
+    questionKey: 'faq.items.howWorks.question' as const,
+    answerKey: 'faq.items.howWorks.answer' as const,
   },
   {
-    question: "How much life insurance coverage do I need?",
-    answer: "The amount of coverage you need depends on various factors including your income, debts, family size, and future financial goals. Our experts can help you calculate the right amount of coverage for your specific situation.",
+    id: 'accuracy',
+    questionKey: 'faq.items.accuracy.question' as const,
+    answerKey: 'faq.items.accuracy.answer' as const,
   },
   {
-    question: "How long does the application process take?",
-    answer: "The application process typically takes 15-30 minutes to complete. Once submitted, we'll review your application and get back to you within 24-48 hours with available options and next steps.",
+    id: 'cost',
+    questionKey: 'faq.items.cost.question' as const,
+    answerKey: 'faq.items.cost.answer' as const,
   },
   {
-    question: "Are medical exams required?",
-    answer: "Not always. We offer both medical and no-medical exam policies. The requirement for a medical exam depends on factors such as your age, the coverage amount, and the type of policy you're applying for.",
+    id: 'support',
+    questionKey: 'faq.items.support.question' as const,
+    answerKey: 'faq.items.support.answer' as const,
   },
-  {
-    question: "How much does life insurance cost?",
-    answer: "Premium costs vary based on factors like age, health, coverage amount, and policy type. We work with multiple providers to find the most competitive rates for your specific situation.",
-  },
-];
+] as const;
 
-export function FaqSection() {
+export function FAQSection() {
+  const { t } = useTranslations();
+
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Find answers to common questions about our life insurance solutions.
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-6">
+            {t('faq.title' as const)}
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {t('faq.description' as const)}
           </p>
         </div>
+
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
+            {FAQ_DATA.map((faq, index) => (
+              <motion.div
+                key={faq.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <AccordionItem value={faq.id}>
+                  <AccordionTrigger className="text-left">
+                    {t(faq.questionKey)}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {t(faq.answerKey)}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             ))}
           </Accordion>
         </div>

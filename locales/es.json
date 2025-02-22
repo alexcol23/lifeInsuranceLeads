@@ -294,5 +294,54 @@
         "description": "Opcionalmente programa una llamada con un experto licenciado para discutir tus opciones recomendadas por IA."
       }
     }
+  },
+  "testimonials": {
+    "title": "Lo Que Nuestros Clientes Dicen Sobre las Recomendaciones de IA",
+    "description": "Descubre cómo nuestra plataforma impulsada por IA ha ayudado a otros a encontrar sus planes de seguro perfectos.",
+    "items": {
+      "sarah": {
+        "name": "Sarah Johnson",
+        "role": "Dueña de Negocio",
+        "content": "¡Las recomendaciones de la IA fueron precisas! Me sorprendió lo bien que el sistema entendió mis necesidades y encontró planes que coincidían perfectamente con mis requisitos."
+      },
+      "michael": {
+        "name": "Michael Chen",
+        "role": "Ingeniero de Software",
+        "content": "Como alguien que aprecia la tecnología, me encantó cómo la IA analizó diferentes planes y proporcionó recomendaciones basadas en datos. El proceso fue eficiente y los resultados fueron excelentes."
+      },
+      "emily": {
+        "name": "Emily Rodriguez",
+        "role": "Profesional de la Salud",
+        "content": "Encontrar el seguro adecuado solía ser abrumador, pero esta plataforma impulsada por IA lo hizo simple y directo. Estoy muy satisfecha con mi cobertura."
+      }
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "description": "Encuentra respuestas a preguntas comunes sobre nuestras recomendaciones de seguros basadas en IA",
+    "items": {
+      "howWorks": {
+        "question": "¿Cómo funciona el sistema de recomendación de IA?",
+        "answer": "Nuestra IA analiza tu perfil, preferencias y requisitos para encontrar planes de seguro en nuestra extensa base de datos. Considera factores como necesidades de cobertura, presupuesto y factores de riesgo para proporcionar recomendaciones personalizadas."
+      },
+      "accuracy": {
+        "question": "¿Qué tan precisas son las recomendaciones de la IA?",
+        "answer": "Nuestro sistema de IA ha sido entrenado con miles de casos de seguros y se actualiza continuamente. Proporciona coincidencias altamente precisas basadas en tus necesidades específicas, con una tasa de satisfacción de más del 95% entre nuestros usuarios."
+      },
+      "cost": {
+        "question": "¿Hay algún costo por usar el servicio de recomendación de IA?",
+        "answer": "No, nuestro servicio de recomendación de IA es completamente gratuito. Solo pagas por el plan de seguro que elijas comprar."
+      },
+      "support": {
+        "question": "¿Puedo hablar con un asesor humano?",
+        "answer": "¡Sí! Si bien nuestra IA proporciona recomendaciones iniciales, siempre puedes programar una llamada con nuestros asesores de seguros licenciados para discutir tus opciones en detalle."
+      }
+    }
+  },
+  "cta": {
+    "title": "¿Listo para Encontrar tu Plan de Seguro Perfecto?",
+    "description": "Deja que nuestra IA te ayude a descubrir las mejores opciones de cobertura adaptadas a tus necesidades",
+    "button": "Comienza Ahora",
+    "secondary": "Consulta gratuita • Sin compromiso"
   }
 }

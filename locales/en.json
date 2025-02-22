@@ -228,5 +228,54 @@
         "description": "Optionally schedule a call with a licensed expert to discuss your AI-recommended options."
       }
     }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say About Our AI Recommendations",
+    "description": "Discover how our AI-powered platform has helped others find their perfect insurance plans.",
+    "items": {
+      "sarah": {
+        "name": "Sarah Johnson",
+        "role": "Business Owner",
+        "content": "The AI recommendations were spot-on! I was amazed at how well the system understood my needs and found plans that perfectly matched my requirements."
+      },
+      "michael": {
+        "name": "Michael Chen",
+        "role": "Software Engineer",
+        "content": "As someone who appreciates technology, I loved how the AI analyzed different plans and provided data-driven recommendations. The process was efficient and the results were excellent."
+      },
+      "emily": {
+        "name": "Emily Rodriguez",
+        "role": "Healthcare Professional",
+        "content": "Finding the right insurance used to be overwhelming, but this AI-powered platform made it simple and straightforward. I'm very satisfied with my coverage."
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about our AI-powered insurance recommendations",
+    "items": {
+      "howWorks": {
+        "question": "How does the AI recommendation system work?",
+        "answer": "Our AI analyzes your profile, preferences, and requirements to match you with insurance plans from our extensive database. It considers factors like coverage needs, budget, and risk factors to provide personalized recommendations."
+      },
+      "accuracy": {
+        "question": "How accurate are the AI recommendations?",
+        "answer": "Our AI system has been trained on thousands of insurance cases and is continuously updated. It provides highly accurate matches based on your specific needs, with a satisfaction rate of over 95% among our users."
+      },
+      "cost": {
+        "question": "Is there a cost for using the AI recommendation service?",
+        "answer": "No, our AI recommendation service is completely free to use. You only pay for the insurance plan you choose to purchase."
+      },
+      "support": {
+        "question": "Can I speak with a human advisor?",
+        "answer": "Yes! While our AI provides initial recommendations, you can always schedule a call with our licensed insurance advisors to discuss your options in detail."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Find Your Perfect Insurance Plan?",
+    "description": "Let our AI help you discover the best coverage options tailored to your needs",
+    "button": "Get Started Now",
+    "secondary": "Free consultation • No obligation"
   }
 }

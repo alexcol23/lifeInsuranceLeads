@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from '@/hooks/useTranslations';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Shield, Sparkles } from 'lucide-react';
@@ -7,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 export function HeroSection() {
+  const { t } = useTranslations();
   const router = useRouter();
 
   const handleGetStarted = () => {
@@ -44,7 +46,7 @@ export function HeroSection() {
               className="inline-flex items-center rounded-lg bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-semibold mb-8 border border-white/10"
             >
               <Sparkles className="w-4 h-4 mr-2" /> 
-              <span>AI-Powered Insurance Recommendations</span>
+              <span>{t('hero.tagline')}</span>
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -52,8 +54,8 @@ export function HeroSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight"
             >
-              Find Your Perfect
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"> Insurance Plan</span>
+              {t('hero.title')}
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">{t('hero.titleHighlight')}</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -61,7 +63,7 @@ export function HeroSection() {
               transition={{ delay: 0.6, duration: 0.5 }}
               className="text-2xl font-medium text-white/90 mb-12 leading-relaxed max-w-xl"
             >
-              Let our AI analyze your profile and recommend the best life insurance plans tailored to your unique needs.
+              {t('hero.description')}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -73,10 +75,10 @@ export function HeroSection() {
                 onClick={handleGetStarted}
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-14 px-8 text-lg font-semibold transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg"
               >
-                Get AI-Powered Recommendations
+                {t('hero.cta')}
               </Button>
               <p className="text-sm text-white/70 mt-4">
-                Takes only 2 minutes • Free personalized analysis
+                {t('hero.ctaDescription')}
               </p>
             </motion.div>
           </motion.div>

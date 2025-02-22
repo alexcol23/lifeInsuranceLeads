@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,12 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="es">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-        <Toaster />
+        <LanguageProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+        </LanguageProvider>
       </body>
     </html>
   );

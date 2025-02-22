@@ -1,0 +1,254 @@
+{
+  "common": {
+    "getStarted": "Comenzar",
+    "next": "Siguiente",
+    "nextStep": "Siguiente Paso",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "processing": "Procesando",
+    "optional": "Opcional",
+    "success": "¡Éxito!",
+    "error": "Error",
+    "tryAgain": "Algo salió mal. Por favor intenta de nuevo.",
+    "downloadApp": "Descargar App"
+  },
+  "navigation": {
+    "about": "Acerca de",
+    "features": "Características",
+    "pricing": "Precios",
+    "contact": "Contacto"
+  },
+  "header": {
+    "menu": "Menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "hero": {
+    "tagline": "Recomendaciones de Seguros Impulsadas por IA",
+    "title": "Encuentra tu",
+    "titleHighlight": "Plan de Seguro Perfecto",
+    "description": "Deja que nuestra IA analice tu perfil y recomiende los mejores planes de seguro de vida adaptados a tus necesidades únicas.",
+    "cta": "Obtener Recomendaciones con IA",
+    "ctaDescription": "Solo toma 2 minutos • Análisis personalizado gratuito"
+  },
+  "features": {
+    "title": "Cómo Nuestra IA Encuentra Tu Plan Perfecto",
+    "description": "Utilizamos tecnología avanzada de IA para analizar tus necesidades y encontrar el mejor seguro de vida para ti.",
+    "items": {
+      "analysis": {
+        "title": "Análisis Inteligente",
+        "description": "Nuestra IA analiza múltiples factores para entender tus necesidades específicas"
+      },
+      "comparison": {
+        "title": "Comparación de Planes",
+        "description": "Comparamos cientos de planes de seguro para encontrar las mejores opciones"
+      },
+      "recommendation": {
+        "title": "Recomendaciones Personalizadas",
+        "description": "Recibe recomendaciones adaptadas a tu perfil y presupuesto"
+      }
+    }
+  },
+  "blog": {
+    "title": "Últimas Publicaciones",
+    "readMore": "Leer más",
+    "viewAll": "Ver todas las publicaciones"
+  },
+  "footer": {
+    "company": {
+      "title": "Compañía",
+      "about": "Sobre Nosotros",
+      "careers": "Carreras",
+      "press": "Prensa"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Uso",
+      "cookies": "Política de Cookies"
+    },
+    "support": {
+      "title": "Soporte",
+      "help": "Centro de Ayuda",
+      "contact": "Contacto",
+      "faq": "Preguntas Frecuentes"
+    },
+    "social": {
+      "title": "Social",
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram"
+    },
+    "copyright": " 2025 Life Insurance Leads. Todos los derechos reservados."
+  },
+  "form": {
+    "steps": {
+      "personalInfo": "Información Personal",
+      "personalInfoDescription": "Ayúdanos a entender mejor tu perfil",
+      "insuranceNeeds": "Necesidades de Seguro",
+      "insuranceNeedsDescription": "Dinos qué tipo de cobertura necesitas"
+    },
+    "fields": {
+      "age": {
+        "label": "Edad",
+        "placeholder": "Ingresa tu edad"
+      },
+      "gender": {
+        "label": "Género",
+        "options": {
+          "male": "Masculino",
+          "female": "Femenino"
+        }
+      },
+      "maritalStatus": {
+        "label": "Estado Civil",
+        "placeholder": "Selecciona tu estado civil",
+        "options": {
+          "single": "Soltero/a",
+          "married": "Casado/a",
+          "divorced": "Divorciado/a",
+          "widowed": "Viudo/a"
+        }
+      },
+      "income": {
+        "label": "Rango de Ingresos Anuales",
+        "options": {
+          "under-25k": "Menos de $25,000",
+          "25k-50k": "$25,000 - $50,000",
+          "50k-75k": "$50,000 - $75,000",
+          "75k-100k": "$75,000 - $100,000",
+          "over-100k": "Más de $100,000"
+        }
+      },
+      "hasDependents": {
+        "label": "¿Tienes dependientes?",
+        "description": "Personas que dependen de tu apoyo financiero"
+      },
+      "isSmoker": {
+        "label": "¿Eres fumador?",
+        "description": "Esto afecta las tarifas del seguro"
+      },
+      "hasPreexistingCondition": {
+        "label": "¿Condiciones médicas preexistentes?",
+        "description": "Ayúdanos a proporcionar recomendaciones precisas"
+      },
+      "preexistingConditionDetails": {
+        "label": "Por favor proporciona detalles (opcional)",
+        "placeholder": "Ingresa los detalles de la condición"
+      },
+      "insurancePurpose": {
+        "label": "Propósito Principal del Seguro de Vida",
+        "options": {
+          "family": "Protección Familiar",
+          "mortgage": "Cobertura de Hipoteca",
+          "business": "Protección de Negocio",
+          "retirement": "Planificación de Retiro"
+        }
+      }
+    },
+    "successMessage": "Tu información ha sido enviada. Analizaremos tu perfil y proporcionaremos recomendaciones personalizadas en breve."
+  },
+  "recommendations": {
+    "title": "La Forma Inteligente de Elegir un Seguro",
+    "description": "Deja que nuestra IA analice tu perfil y recomiende los mejores planes de seguro de vida adaptados a tus necesidades únicas.",
+    "steps": {
+      "personalInfo": "Información Personal",
+      "coverageNeeds": "Necesidades de Cobertura"
+    },
+    "cards": {
+      "age": {
+        "title": "Edad",
+        "description": "Tu edad nos ayuda a determinar las opciones de cobertura y tarifas más adecuadas."
+      },
+      "gender": {
+        "title": "Género",
+        "description": "Las tarifas de seguro pueden variar según el género debido a diferentes factores de esperanza de vida.",
+        "options": {
+          "male": "Masculino",
+          "female": "Femenino"
+        }
+      },
+      "smoker": {
+        "title": "Estado de Fumador",
+        "description": "Ser fumador puede afectar tus primas de seguro.",
+        "options": {
+          "yes": "Sí",
+          "no": "No"
+        }
+      },
+      "health": {
+        "title": "Estado de Salud",
+        "description": "Tu estado de salud general ayuda a determinar las opciones de cobertura.",
+        "options": {
+          "excellent": "Excelente",
+          "good": "Bueno",
+          "fair": "Regular",
+          "poor": "Malo"
+        }
+      },
+      "income": {
+        "title": "Ingreso Anual",
+        "description": "Tus ingresos nos ayudan a sugerir montos de cobertura apropiados.",
+        "prefix": "$",
+        "placeholder": "Ingresa tu ingreso anual",
+        "options": {
+          "under-25k": "Menos de $25,000",
+          "25k-50k": "$25,000 - $50,000",
+          "50k-75k": "$50,000 - $75,000",
+          "75k-100k": "$75,000 - $100,000",
+          "over-100k": "Más de $100,000"
+        }
+      },
+      "dependents": {
+        "title": "Dependientes",
+        "description": "Número de personas que dependen de tus ingresos.",
+        "suffix": "dependientes"
+      },
+      "maritalStatus": {
+        "title": "Estado Civil",
+        "description": "Selecciona tu estado civil actual",
+        "options": {
+          "single": "Soltero/a",
+          "married": "Casado/a",
+          "divorced": "Divorciado/a",
+          "widowed": "Viudo/a"
+        }
+      },
+      "preexistingCondition": {
+        "title": "Condiciones Médicas Preexistentes",
+        "description": "Ayúdanos a proporcionar recomendaciones precisas compartiendo cualquier condición médica preexistente",
+        "placeholder": "Por favor proporciona detalles de tu condición",
+        "options": {
+          "yes": "Sí",
+          "no": "No"
+        }
+      },
+      "insurancePurpose": {
+        "title": "Propósito Principal del Seguro de Vida",
+        "description": "Selecciona la razón principal por la que buscas un seguro de vida",
+        "options": {
+          "family": {
+            "title": "Protección Familiar",
+            "description": "Asegura la estabilidad financiera de tu familia"
+          },
+          "mortgage": {
+            "title": "Cobertura de Hipoteca",
+            "description": "Cubre los pagos de tu hipoteca"
+          },
+          "business": {
+            "title": "Protección de Negocio",
+            "description": "Protege tus intereses comerciales"
+          },
+          "retirement": {
+            "title": "Planificación de Retiro",
+            "description": "Asegura tu futuro en el retiro"
+          }
+        }
+      }
+    },
+    "navigation": {
+      "next": "Siguiente Paso",
+      "previous": "Anterior",
+      "submit": "Obtener Recomendaciones"
+    }
+  }
+}

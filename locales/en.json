@@ -1,0 +1,188 @@
+{
+  "common": {
+    "getStarted": "Get Started",
+    "next": "Next",
+    "nextStep": "Next Step",
+    "previous": "Previous",
+    "submit": "Submit",
+    "processing": "Processing",
+    "optional": "Optional",
+    "success": "Success!",
+    "error": "Error",
+    "tryAgain": "Something went wrong. Please try again.",
+    "downloadApp": "Download App"
+  },
+  "navigation": {
+    "about": "About",
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "header": {
+    "menu": "Menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "tagline": "AI-Powered Insurance Recommendations",
+    "title": "Find Your",
+    "titleHighlight": "Perfect Insurance Plan",
+    "description": "Let our AI analyze your profile and recommend the best life insurance plans tailored to your unique needs.",
+    "cta": "Get AI-Powered Recommendations",
+    "ctaDescription": "Takes only 2 minutes • Free personalized analysis"
+  },
+  "features": {
+    "title": "How Our AI Finds Your Perfect Plan",
+    "description": "We use advanced AI technology to analyze your needs and find the best life insurance for you.",
+    "items": {
+      "analysis": {
+        "title": "Smart Analysis",
+        "description": "Our AI analyzes multiple factors to understand your specific needs"
+      },
+      "comparison": {
+        "title": "Plan Comparison",
+        "description": "We compare hundreds of insurance plans to find the best options"
+      },
+      "recommendation": {
+        "title": "Personalized Recommendations",
+        "description": "Get recommendations tailored to your profile and budget"
+      }
+    }
+  },
+  "blog": {
+    "title": "Latest from Our Blog",
+    "readMore": "Read more",
+    "viewAll": "View all posts"
+  },
+  "footer": {
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "careers": "Careers",
+      "press": "Press"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use",
+      "cookies": "Cookie Policy"
+    },
+    "support": {
+      "title": "Support",
+      "help": "Help Center",
+      "contact": "Contact",
+      "faq": "FAQ"
+    },
+    "social": {
+      "title": "Social",
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "instagram": "Instagram"
+    },
+    "copyright": " 2025 Life Insurance Leads. All rights reserved."
+  },
+  "recommendations": {
+    "title": "The Smart Way to Choose Insurance",
+    "description": "Let our AI analyze your profile and recommend the best life insurance plans tailored to your unique needs.",
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Get Recommendations"
+    },
+    "steps": {
+      "personalInfo": "Personal Information",
+      "coverageNeeds": "Coverage Needs"
+    },
+    "cards": {
+      "age": {
+        "title": "Age",
+        "description": "Your age helps us determine the most suitable coverage options and rates.",
+        "placeholder": "Enter your age"
+      },
+      "gender": {
+        "title": "Gender",
+        "description": "Insurance rates can vary based on gender due to different life expectancy factors.",
+        "options": {
+          "male": "Male",
+          "female": "Female"
+        }
+      },
+      "smoker": {
+        "title": "Smoking Status",
+        "description": "Being a smoker can affect your insurance premiums.",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "health": {
+        "title": "Health Condition",
+        "description": "Your overall health status helps determine coverage options.",
+        "options": {
+          "excellent": "Excellent",
+          "good": "Good",
+          "fair": "Fair",
+          "poor": "Poor"
+        }
+      },
+      "income": {
+        "title": "Annual Income",
+        "description": "Your income helps us suggest appropriate coverage amounts.",
+        "prefix": "$",
+        "placeholder": "Enter your annual income",
+        "options": {
+          "under-25k": "Under $25,000",
+          "25k-50k": "$25,000 - $50,000",
+          "50k-75k": "$50,000 - $75,000",
+          "75k-100k": "$75,000 - $100,000",
+          "over-100k": "Over $100,000"
+        }
+      },
+      "dependents": {
+        "title": "Number of Dependents",
+        "description": "People who rely on your financial support",
+        "placeholder": "Enter number of dependents"
+      },
+      "maritalStatus": {
+        "title": "Marital Status",
+        "description": "Select your current marital status",
+        "options": {
+          "single": "Single",
+          "married": "Married",
+          "divorced": "Divorced",
+          "widowed": "Widowed"
+        }
+      },
+      "preexistingCondition": {
+        "title": "Pre-existing Medical Conditions",
+        "description": "Help us provide accurate recommendations by sharing any pre-existing medical conditions",
+        "placeholder": "Please provide details of your condition",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "insurancePurpose": {
+        "title": "Primary Purpose for Life Insurance",
+        "description": "Select the main reason why you're looking for life insurance",
+        "options": {
+          "family": {
+            "title": "Family Protection",
+            "description": "Ensure your family's financial security"
+          },
+          "mortgage": {
+            "title": "Mortgage Coverage",
+            "description": "Cover your mortgage payments"
+          },
+          "business": {
+            "title": "Business Protection",
+            "description": "Protect your business interests"
+          },
+          "retirement": {
+            "title": "Retirement Planning",
+            "description": "Secure your retirement future"
+          }
+        }
+      }
+    }
+  }
+}

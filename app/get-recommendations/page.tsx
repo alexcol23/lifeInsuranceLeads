@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from '@/hooks/useTranslations';
 import {
   Card,
   CardContent,
@@ -36,11 +37,6 @@ import { formSchema, FormValues, incomeRanges, insurancePurposes } from '@/types
 import { FormStepper } from '@/components/form/FormStepper';
 import { SelectCard } from '@/components/form/SelectCard';
 
-const steps = [
-  { title: 'Personal Info', icon: User2 },
-  { title: 'Insurance Needs', icon: Building2 },
-];
-
 const employeeRanges = [
   { value: '1-20', label: '1-20', icon: '👥' },
   { value: '21-49', label: '21-49', icon: '👥👥' },
@@ -48,9 +44,20 @@ const employeeRanges = [
 ];
 
 export default function GetRecommendations() {
+  const { t } = useTranslations();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  const stepKeys = {
+    personalInfo: 'recommendations.steps.personalInfo',
+    coverageNeeds: 'recommendations.steps.coverageNeeds'
+  } as const;
+
+  const steps = [
+    { title: t(stepKeys.personalInfo), icon: User2 },
+    { title: t(stepKeys.coverageNeeds), icon: Building2 },
+  ];
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -64,19 +71,17 @@ export default function GetRecommendations() {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Simular envío a la API
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       toast({
-        title: "Success!",
-        description: "Your information has been submitted. We'll analyze your profile and provide personalized recommendations shortly.",
+        title: t('common.success'),
+        description: t('common.tryAgain'),
       });
       
-      // Aquí iría la redirección a la página de resultados
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: t('common.error'),
+        description: t('common.tryAgain'),
         variant: "destructive",
       });
     } finally {
@@ -115,12 +120,10 @@ export default function GetRecommendations() {
           <Card className="border-none shadow-xl bg-white/80 backdrop-blur-sm">
             <CardHeader className="space-y-1">
               <CardTitle className="text-2xl text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                {step === 1 ? 'Tell Us About Yourself' : 'Your Insurance Needs'}
+                {t('recommendations.title')}
               </CardTitle>
               <CardDescription className="text-center text-gray-500">
-                {step === 1 
-                  ? 'Help us understand your profile better'
-                  : 'Let us know what type of coverage you need'}
+                {t('recommendations.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -141,11 +144,11 @@ export default function GetRecommendations() {
                             name="age"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Age</FormLabel>
+                                <FormLabel>{t('recommendations.cards.age.title')}</FormLabel>
                                 <FormControl>
                                   <Input 
                                     type="number" 
-                                    placeholder="Enter your age" 
+                                    placeholder={t('recommendations.cards.age.description')} 
                                     className="bg-white/50 border-gray-200 focus:border-purple-500 transition-colors"
                                     {...field} 
                                   />
@@ -160,18 +163,18 @@ export default function GetRecommendations() {
                             name="maritalStatus"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Marital Status</FormLabel>
+                                <FormLabel>{t('recommendations.cards.maritalStatus.title')}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger className="bg-white/50 border-gray-200 focus:border-purple-500 transition-colors">
-                                      <SelectValue placeholder="Select status" />
+                                      <SelectValue placeholder={t('recommendations.cards.maritalStatus.description')} />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    <SelectItem value="single">Single</SelectItem>
-                                    <SelectItem value="married">Married</SelectItem>
-                                    <SelectItem value="divorced">Divorced</SelectItem>
-                                    <SelectItem value="widowed">Widowed</SelectItem>
+                                    <SelectItem value="single">{t('recommendations.cards.maritalStatus.options.single')}</SelectItem>
+                                    <SelectItem value="married">{t('recommendations.cards.maritalStatus.options.married')}</SelectItem>
+                                    <SelectItem value="divorced">{t('recommendations.cards.maritalStatus.options.divorced')}</SelectItem>
+                                    <SelectItem value="widowed">{t('recommendations.cards.maritalStatus.options.widowed')}</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
@@ -184,28 +187,30 @@ export default function GetRecommendations() {
                           control={form.control}
                           name="gender"
                           render={({ field }) => (
-                            <FormItem className="space-y-1">
-                              <FormLabel>Gender (Optional)</FormLabel>
-                              <FormControl>
-                                <RadioGroup
-                                  onValueChange={field.onChange}
-                                  defaultValue={field.value}
-                                  className="flex space-x-4"
-                                >
-                                  <FormItem className="flex items-center space-x-2">
-                                    <FormControl>
-                                      <RadioGroupItem value="male" />
-                                    </FormControl>
-                                    <FormLabel className="font-normal">Male</FormLabel>
-                                  </FormItem>
-                                  <FormItem className="flex items-center space-x-2">
-                                    <FormControl>
-                                      <RadioGroupItem value="female" />
-                                    </FormControl>
-                                    <FormLabel className="font-normal">Female</FormLabel>
-                                  </FormItem>
-                                </RadioGroup>
-                              </FormControl>
+                            <FormItem>
+                              <FormLabel>{t('recommendations.cards.gender.title')}</FormLabel>
+                              <div className="grid grid-cols-2 gap-3">
+                                <SelectCard
+                                  key="male"
+                                  icon="👨"
+                                  title={t('recommendations.cards.gender.options.male')}
+                                  selected={field.value === 'male'}
+                                  onClick={() => field.onChange('male')}
+                                  description=""
+                                />
+                                <SelectCard
+                                  key="female"
+                                  icon="👩"
+                                  title={t('recommendations.cards.gender.options.female')}
+                                  selected={field.value === 'female'}
+                                  onClick={() => field.onChange('female')}
+                                  description=""
+                                />
+                              </div>
+                              <p className="text-sm text-gray-500 mt-2">
+                                {t('recommendations.cards.gender.description')}
+                              </p>
+                              <FormMessage />
                             </FormItem>
                           )}
                         />
@@ -215,15 +220,16 @@ export default function GetRecommendations() {
                           name="income"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Annual Income Range</FormLabel>
+                              <FormLabel>{t('recommendations.cards.income.title')}</FormLabel>
                               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                                 {incomeRanges.map((range) => (
                                   <SelectCard
                                     key={range.value}
                                     icon={<Building2 className="w-8 h-8 text-purple-600" />}
-                                    title={range.label}
-                                    isSelected={field.value === range.value}
+                                    title={t(`recommendations.cards.income.options.${range.value}`)}
+                                    selected={field.value === range.value}
                                     onClick={() => field.onChange(range.value)}
+                                    description=""
                                   />
                                 ))}
                               </div>
@@ -238,8 +244,8 @@ export default function GetRecommendations() {
                           render={({ field }) => (
                             <FormItem className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white/50">
                               <div>
-                                <FormLabel className="text-base">Do you have dependents?</FormLabel>
-                                <p className="text-sm text-gray-500">People who rely on your financial support</p>
+                                <FormLabel className="text-base">{t('recommendations.cards.dependents.title')}</FormLabel>
+                                <p className="text-sm text-gray-500">{t('recommendations.cards.dependents.description')}</p>
                               </div>
                               <FormControl>
                                 <Switch
@@ -268,8 +274,8 @@ export default function GetRecommendations() {
                             render={({ field }) => (
                               <FormItem className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white/50">
                                 <div>
-                                  <FormLabel className="text-base">Are you a smoker?</FormLabel>
-                                  <p className="text-sm text-gray-500">This affects your insurance rates</p>
+                                  <FormLabel className="text-base">{t('recommendations.cards.smoker.title')}</FormLabel>
+                                  <p className="text-sm text-gray-500">{t('recommendations.cards.smoker.description')}</p>
                                 </div>
                                 <FormControl>
                                   <Switch
@@ -287,8 +293,8 @@ export default function GetRecommendations() {
                             render={({ field }) => (
                               <FormItem className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white/50">
                                 <div>
-                                  <FormLabel className="text-base">Pre-existing medical conditions?</FormLabel>
-                                  <p className="text-sm text-gray-500">Help us provide accurate recommendations</p>
+                                  <FormLabel className="text-base">{t('recommendations.cards.preexistingCondition.title')}</FormLabel>
+                                  <p className="text-sm text-gray-500">{t('recommendations.cards.preexistingCondition.description')}</p>
                                 </div>
                                 <FormControl>
                                   <Switch
@@ -311,11 +317,11 @@ export default function GetRecommendations() {
                                 name="preexistingConditionDetails"
                                 render={({ field }) => (
                                   <FormItem>
-                                    <FormLabel>Please provide details (optional)</FormLabel>
+                                    <FormLabel>{t('recommendations.cards.preexistingCondition.placeholder')}</FormLabel>
                                     <FormControl>
                                       <Input 
                                         {...field} 
-                                        placeholder="Enter condition details"
+                                        placeholder={t('recommendations.cards.preexistingCondition.placeholder')}
                                         className="bg-white/50 border-gray-200 focus:border-purple-500 transition-colors"
                                       />
                                     </FormControl>
@@ -332,14 +338,18 @@ export default function GetRecommendations() {
                           name="insurancePurpose"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel>Primary Purpose for Life Insurance</FormLabel>
+                              <FormLabel>{t('recommendations.cards.insurancePurpose.title')}</FormLabel>
+                              <p className="text-sm text-gray-500">
+                                {t('recommendations.cards.insurancePurpose.description')}
+                              </p>
                               <div className="grid grid-cols-2 gap-4">
                                 {insurancePurposes.map((purpose) => (
                                   <SelectCard
                                     key={purpose.value}
                                     icon={purpose.icon}
-                                    title={purpose.label}
-                                    isSelected={field.value === purpose.value}
+                                    title={t(`recommendations.cards.insurancePurpose.options.${purpose.value}.title`)}
+                                    description={t(`recommendations.cards.insurancePurpose.options.${purpose.value}.description`)}
+                                    selected={field.value === purpose.value}
                                     onClick={() => field.onChange(purpose.value)}
                                   />
                                 ))}
@@ -361,7 +371,7 @@ export default function GetRecommendations() {
                           onClick={() => setStep(1)}
                           className="border-gray-200 hover:bg-gray-50"
                         >
-                          Previous
+                          {t('recommendations.navigation.previous')}
                         </Button>
                         <Button
                           type="submit"
@@ -371,10 +381,10 @@ export default function GetRecommendations() {
                           {isSubmitting ? (
                             <>
                               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                              Processing
+                              {t('common.processing')}
                             </>
                           ) : (
-                            'Get Recommendations'
+                            t('recommendations.navigation.submit')
                           )}
                         </Button>
                       </>
@@ -384,7 +394,7 @@ export default function GetRecommendations() {
                         onClick={nextStep}
                         className="ml-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
                       >
-                        Next Step
+                        {t('recommendations.navigation.next')}
                       </Button>
                     )}
                   </div>

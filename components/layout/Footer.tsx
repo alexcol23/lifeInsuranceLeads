@@ -1,109 +1,91 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useTranslations } from '@/hooks/useTranslations';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
-const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: '#' },
-  { name: 'Twitter', icon: Twitter, href: '#' },
-  { name: 'Instagram', icon: Instagram, href: '#' },
-  { name: 'LinkedIn', icon: Linkedin, href: '#' },
-];
-
-const footerLinks = [
+const footerSections = [
   {
-    title: 'Company',
-    links: [
-      { name: 'About Us', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Contact', href: '#' },
-      { name: 'Blog', href: '#' },
-    ],
+    id: 'company',
+    items: ['about', 'careers', 'press']
   },
   {
-    title: 'Resources',
-    links: [
-      { name: 'Insurance Guide', href: '#' },
-      { name: 'FAQ', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-    ],
+    id: 'legal',
+    items: ['privacy', 'terms', 'cookies']
   },
+  {
+    id: 'support',
+    items: ['help', 'contact', 'faq']
+  },
+  {
+    id: 'social',
+    items: ['twitter', 'facebook', 'instagram']
+  }
 ];
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const { t } = useTranslations();
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Life Insurance</h3>
-            <p className="text-gray-400">
-              AI-powered insurance recommendations tailored to your needs.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </Link>
-                );
-              })}
-            </div>
+    <footer className="bg-white" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8">
+            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+              Life Insurance Leads
+            </Link>
           </div>
-
-          {/* Links Sections */}
-          {footerLinks.map((section) => (
-            <div key={section.title}>
-              <h4 className="text-lg font-semibold mb-4">{section.title}</h4>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              {footerSections.slice(0, 2).map((section) => (
+                <div key={section.id}>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                    {t(`footer.${section.id}.title`)}
+                  </h3>
+                  <ul role="list" className="mt-6 space-y-4">
+                    {section.items.map((item) => (
+                      <li key={item}>
+                        <Link
+                          href="#"
+                          className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        >
+                          {t(`footer.${section.id}.${item}`)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
-
-          {/* CTA Section */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Get Started</h4>
-            <p className="text-gray-400 mb-4">
-              Find the perfect insurance plan with our AI recommendations.
-            </p>
-            <Button
-              variant="secondary"
-              onClick={scrollToTop}
-              className="w-full bg-white text-purple-600 hover:bg-white/90"
-            >
-              Get AI Recommendations <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              {footerSections.slice(2).map((section) => (
+                <div key={section.id}>
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                    {t(`footer.${section.id}.title`)}
+                  </h3>
+                  <ul role="list" className="mt-6 space-y-4">
+                    {section.items.map((item) => (
+                      <li key={item}>
+                        <Link
+                          href="#"
+                          className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        >
+                          {t(`footer.${section.id}.${item}`)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Life Insurance. All rights reserved.</p>
-          </div>
+        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+          <p className="text-xs leading-5 text-gray-500">
+            {t('footer.copyright')}
+          </p>
         </div>
       </div>
     </footer>

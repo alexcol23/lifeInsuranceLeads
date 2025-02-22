@@ -26,8 +26,8 @@ export const incomeRanges = [
 ] as const;
 
 export const insurancePurposes = [
-  { value: 'family', label: 'Family Protection', icon: '👨‍👩‍👧‍👦' },
-  { value: 'mortgage', label: 'Mortgage Coverage', icon: '🏠' },
-  { value: 'business', label: 'Business Protection', icon: '💼' },
-  { value: 'retirement', label: 'Retirement Planning', icon: '🌴' },
+  { value: 'family', icon: '👨‍👩‍👧‍👦', label: 'Family Protection' },
+  { value: 'mortgage', icon: '🏠', label: 'Mortgage Coverage' },
+  { value: 'business', icon: '💼', label: 'Business Protection' },
+  { value: 'retirement', icon: '🌴', label: 'Retirement Planning' }
 ] as const;

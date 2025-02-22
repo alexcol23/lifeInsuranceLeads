@@ -1,59 +1,70 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { ReactNode } from 'react';
 
-interface SelectCardProps {
-  icon?: string | React.ReactNode;
+export interface SelectCardProps {
   title: string;
-  description?: string;
-  isSelected: boolean;
-  onClick: () => void;
+  description: string;
+  selected?: boolean;
+  onClick?: () => void;
+  icon?: ReactNode;
+  size?: 'default' | 'compact';
   className?: string;
+  children?: ReactNode;
 }
 
 export function SelectCard({
-  icon,
   title,
   description,
-  isSelected,
+  selected = false,
   onClick,
-  className = '',
+  icon,
+  size = 'default',
+  className,
+  children
 }: SelectCardProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={`relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
-        isSelected
-          ? 'border-purple-600 bg-purple-50/50 shadow-lg'
-          : 'border-gray-200 hover:border-purple-200 hover:bg-gray-50/50'
-      } ${className}`}
-    >
-      {isSelected && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute -top-2 -right-2 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center"
-        >
-          <Check className="w-4 h-4 text-white" />
-        </motion.div>
+      className={cn(
+        'relative flex flex-col rounded-xl border-2 p-6 cursor-pointer transition-colors',
+        selected
+          ? 'border-purple-600 bg-purple-50'
+          : 'border-gray-200 bg-white hover:border-purple-600/50 hover:bg-purple-50/50',
+        size === 'compact' ? 'p-4' : 'p-6',
+        className
       )}
-
-      <div className="flex flex-col items-center text-center">
-        {typeof icon === 'string' ? (
-          <div className="text-3xl mb-3">{icon}</div>
-        ) : (
-          <div className="mb-3">{icon}</div>
-        )}
-        <h3 className={`font-medium mb-1 ${isSelected ? 'text-purple-900' : 'text-gray-900'}`}>
-          {title}
-        </h3>
-        {description && (
-          <p className={`text-sm ${isSelected ? 'text-purple-600' : 'text-gray-500'}`}>
-            {description}
-          </p>
+    >
+      <div className="flex flex-col">
+        <div className="flex items-start gap-4">
+          {icon && (
+            <div className="flex-shrink-0 mt-1">
+              {icon}
+            </div>
+          )}
+          <div>
+            <h3 className={cn(
+              'font-semibold text-gray-900',
+              size === 'compact' ? 'text-base' : 'text-lg'
+            )}>
+              {title}
+            </h3>
+            <p className={cn(
+              'mt-1 text-gray-500',
+              size === 'compact' ? 'text-sm' : 'text-base'
+            )}>
+              {description}
+            </p>
+          </div>
+        </div>
+        {children && (
+          <div className="mt-4">
+            {children}
+          </div>
         )}
       </div>
     </motion.div>

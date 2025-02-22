@@ -16,11 +16,17 @@
     "about": "About",
     "features": "Features",
     "pricing": "Pricing",
-    "contact": "Contact"
+    "contact": "Contact",
+    "benefits": "Benefits",
+    "howItWorks": "How It Works",
+    "blog": "Blog",
+    "faq": "FAQ"
   },
   "header": {
-    "menu": "Menu",
-    "closeMenu": "Close menu"
+    "menu": "Open main menu",
+    "close": "Close menu",
+    "getRecommendations": "Get AI Recommendations",
+    "getRecommendationsSecondary": "Free • No credit card required"
   },
   "hero": {
     "tagline": "AI-Powered Insurance Recommendations",
@@ -49,7 +55,8 @@
     }
   },
   "blog": {
-    "title": "Latest from Our Blog",
+    "title": "Latest Posts",
+    "description": "Stay updated with our latest insights and news",
     "readMore": "Read more",
     "viewAll": "View all posts"
   },
@@ -186,8 +193,8 @@
     }
   },
   "benefits": {
-    "title": "The Smart Way to Choose Insurance",
-    "description": "Experience the power of AI-driven insurance recommendations that make finding the right coverage easier than ever.",
+    "title": "Why Choose InsurMatch AI",
+    "description": "Experience the power of AI-driven insurance recommendations with our comprehensive platform",
     "items": {
       "aiAnalysis": {
         "title": "AI-Powered Analysis",

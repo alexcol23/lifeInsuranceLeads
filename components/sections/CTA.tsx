@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from '@/hooks/useTranslations';
 
-export function CTASection() {
+export function CTA() {
   const { t } = useTranslations();
 
   return (

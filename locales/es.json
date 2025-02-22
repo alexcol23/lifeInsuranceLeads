@@ -16,11 +16,21 @@
     "about": "Acerca de",
     "features": "Características",
     "pricing": "Precios",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "benefits": "Beneficios",
+    "howItWorks": "Cómo Funciona",
+    "testimonials": "Testimonios",
+    "faq": "Preguntas Frecuentes",
+    "benefits": "Beneficios",
+    "howItWorks": "Cómo Funciona",
+    "blog": "Blog",
+    "faq": "FAQ"
   },
   "header": {
-    "menu": "Menú",
-    "closeMenu": "Cerrar menú"
+    "menu": "Abrir menú principal",
+    "close": "Cerrar menú",
+    "getRecommendations": "Obtener Recomendaciones de IA",
+    "getRecommendationsSecondary": "Gratis • Sin tarjeta de crédito"
   },
   "hero": {
     "tagline": "Recomendaciones de Seguros Impulsadas por IA",
@@ -50,6 +60,7 @@
   },
   "blog": {
     "title": "Últimas Publicaciones",
+    "description": "Mantente actualizado con nuestras últimas novedades",
     "readMore": "Leer más",
     "viewAll": "Ver todas las publicaciones"
   },
@@ -252,8 +263,8 @@
     }
   },
   "benefits": {
-    "title": "La Forma Inteligente de Elegir un Seguro",
-    "description": "Experimenta el poder de las recomendaciones de seguros impulsadas por IA que facilitan encontrar la cobertura adecuada.",
+    "title": "¿Por qué elegir InsurMatch AI?",
+    "description": "Experimenta el poder de las recomendaciones de seguros impulsadas por IA con nuestra plataforma integral",
     "items": {
       "aiAnalysis": {
         "title": "Análisis Impulsado por IA",

@@ -1,29 +1,46 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { useTranslations } from '@/hooks/useTranslations';
 import { motion, AnimatePresence } from 'framer-motion';
 
-type NavigationKey = 'navigation.about' | 'navigation.features' | 'navigation.pricing' | 'navigation.contact';
+type NavigationKey = 'navigation.benefits' | 'navigation.howItWorks' | 'navigation.blog' | 'navigation.faq';
 
 const navigation: Array<{
   id: string;
   href: string;
   key: NavigationKey;
 }> = [
-  { id: 'about', href: '#about', key: 'navigation.about' },
-  { id: 'features', href: '#features', key: 'navigation.features' },
-  { id: 'pricing', href: '#pricing', key: 'navigation.pricing' },
-  { id: 'contact', href: '#contact', key: 'navigation.contact' }
+  { id: 'benefits', href: '#benefits', key: 'navigation.benefits' },
+  { id: 'howItWorks', href: '#howItWorks', key: 'navigation.howItWorks' },
+  { id: 'blog', href: '#blog', key: 'navigation.blog' },
+  { id: 'faq', href: '#faq', key: 'navigation.faq' }
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslations();
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20">
@@ -31,7 +48,7 @@ export function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-              LeadsBolt
+              InsurMatch AI
             </span>
           </Link>
         </div>
@@ -49,11 +66,12 @@ export function Header() {
           {navigation.map((item) => (
             <motion.div
               key={item.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ y: -2 }}
+              whileTap={{ y: 0 }}
             >
               <Link
                 href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
                 className="text-sm font-semibold leading-6 text-gray-900 hover:text-purple-600 transition-colors"
               >
                 {t(item.key)}
@@ -67,33 +85,38 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button className="bg-gradient-to-r from-purple-600 to-blue-500 text-white">
-              {t('common.downloadApp')}
+            <Button
+              className="bg-gradient-to-r from-purple-600 to-blue-500 text-white"
+              asChild
+            >
+              <Link href="/get-recommendations">
+                <span className="flex items-center">
+                  {t('header.getRecommendations')}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </span>
+              </Link>
             </Button>
+            <p className="text-xs text-muted-foreground mt-1 text-center">
+              {t('header.getRecommendationsSecondary')}
+            </p>
           </motion.div>
         </div>
       </nav>
       <AnimatePresence>
         {mobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50"
-              onClick={() => setMobileMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 20 }}
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-            >
+          <motion.div
+            className="lg:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="fixed inset-0 z-50" />
+            <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-                    LeadsBolt
+                    InsurMatch AI
                   </span>
                 </Link>
                 <button
@@ -101,7 +124,7 @@ export function Header() {
                   className="-m-2.5 rounded-md p-2.5 text-gray-700"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span className="sr-only">{t('header.closeMenu')}</span>
+                  <span className="sr-only">{t('header.close')}</span>
                   <X className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
@@ -116,8 +139,8 @@ export function Header() {
                       >
                         <Link
                           href={item.href}
+                          onClick={(e) => scrollToSection(e, item.href)}
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                          onClick={() => setMobileMenuOpen(false)}
                         >
                           {t(item.key)}
                         </Link>
@@ -130,15 +153,26 @@ export function Header() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white">
-                        {t('common.downloadApp')}
+                      <Button
+                        className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white"
+                        asChild
+                      >
+                        <Link href="/get-recommendations">
+                          <span className="flex items-center justify-center">
+                            {t('header.getRecommendations')}
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </span>
+                        </Link>
                       </Button>
+                      <p className="text-xs text-muted-foreground mt-1 text-center">
+                        {t('header.getRecommendationsSecondary')}
+                      </p>
                     </motion.div>
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

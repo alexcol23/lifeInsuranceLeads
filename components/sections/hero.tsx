@@ -7,7 +7,7 @@ import { Shield, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-export function HeroSection() {
+export function Hero() {
   const { t } = useTranslations();
   const router = useRouter();
 

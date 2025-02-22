@@ -9,29 +9,29 @@ import type { TranslationKey } from '@/hooks/useTranslations';
 // Extraer los datos de beneficios a un objeto constante
 const BENEFITS_DATA = [
   {
-    icon: Brain,
     id: 'aiAnalysis',
-    titleKey: 'benefits.items.aiAnalysis.title' as const,
-    descriptionKey: 'benefits.items.aiAnalysis.description' as const
+    icon: Brain,
+    titleKey: 'benefits.items.aiAnalysis.title' as TranslationKey,
+    descriptionKey: 'benefits.items.aiAnalysis.description' as TranslationKey,
   },
   {
-    icon: Shield,
     id: 'smartRecommendations',
-    titleKey: 'benefits.items.smartRecommendations.title' as const,
-    descriptionKey: 'benefits.items.smartRecommendations.description' as const
+    icon: Shield,
+    titleKey: 'benefits.items.smartRecommendations.title' as TranslationKey,
+    descriptionKey: 'benefits.items.smartRecommendations.description' as TranslationKey,
   },
   {
-    icon: Users,
     id: 'expertSupport',
-    titleKey: 'benefits.items.expertSupport.title' as const,
-    descriptionKey: 'benefits.items.expertSupport.description' as const
+    icon: Users,
+    titleKey: 'benefits.items.expertSupport.title' as TranslationKey,
+    descriptionKey: 'benefits.items.expertSupport.description' as TranslationKey,
   },
   {
-    icon: DollarSign,
     id: 'costEffective',
-    titleKey: 'benefits.items.costEffective.title' as const,
-    descriptionKey: 'benefits.items.costEffective.description' as const
-  }
+    icon: DollarSign,
+    titleKey: 'benefits.items.costEffective.title' as TranslationKey,
+    descriptionKey: 'benefits.items.costEffective.description' as TranslationKey,
+  },
 ] as const;
 
 // Componente para la tarjeta de beneficio individual
@@ -41,56 +41,73 @@ interface BenefitCardProps {
   descriptionKey: TranslationKey;
 }
 
-const BenefitCard = ({ icon: Icon, titleKey, descriptionKey }: BenefitCardProps) => {
+function BenefitCard({ icon: Icon, titleKey, descriptionKey }: BenefitCardProps) {
   const { t } = useTranslations();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      data-testid="benefit-card"
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
-      <Card className="group hover:scale-105 transition-transform duration-300 h-full">
+      <Card className="border border-gray-100 shadow-lg shadow-gray-200/50 bg-white hover:shadow-xl transition-shadow duration-300">
         <CardHeader>
-          <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
-            <Icon className="w-6 h-6 text-purple-600" />
-          </div>
-          <CardTitle className="text-xl mb-3 group-hover:text-purple-600 transition-colors duration-300">
-            {t(titleKey)}
-          </CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <motion.div 
+            className="h-12 w-12 rounded-lg bg-[#F3EEFF] flex items-center justify-center mb-4"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
+            <Icon className="h-6 w-6 text-[#8B5CF6]" />
+          </motion.div>
+          <CardTitle className="text-xl mb-2 text-gray-900">{t(titleKey)}</CardTitle>
+          <CardDescription className="text-base text-gray-600">
             {t(descriptionKey)}
           </CardDescription>
         </CardHeader>
       </Card>
     </motion.div>
   );
-};
+}
 
-export function BenefitsSection() {
+export function Benefits() {
   const { t } = useTranslations();
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section id="benefits" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">
-            {t('benefits.title' as const)}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('benefits.description' as const)}
-          </p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold mb-4 text-gray-900"
+          >
+            {t('benefits.title' as TranslationKey)}
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
+          >
+            {t('benefits.description' as TranslationKey)}
+          </motion.p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {BENEFITS_DATA.map((benefit, index) => (
-            <BenefitCard
+            <motion.div
               key={benefit.id}
-              icon={benefit.icon}
-              titleKey={benefit.titleKey}
-              descriptionKey={benefit.descriptionKey}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <BenefitCard
+                icon={benefit.icon}
+                titleKey={benefit.titleKey}
+                descriptionKey={benefit.descriptionKey}
+              />
+            </motion.div>
           ))}
         </div>
       </div>

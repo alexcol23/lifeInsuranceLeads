@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { HowItWorksSection } from '@/components/sections/HowItWorks'
+import { HowItWorks } from '@/components/sections/how-it-works'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -17,14 +17,14 @@ jest.mock('@/hooks/useTranslations', () => ({
 
 describe('HowItWorks Section', () => {
   it('renders all steps', () => {
-    render(<HowItWorksSection />)
+    render(<HowItWorks />)
     
     const steps = screen.getAllByTestId('step-card')
     expect(steps).toHaveLength(4)
   })
 
   it('renders step titles', () => {
-    render(<HowItWorksSection />)
+    render(<HowItWorks />)
     
     const titles = [
       'howItWorks.steps.profile.title',
@@ -39,7 +39,7 @@ describe('HowItWorks Section', () => {
   })
 
   it('renders step descriptions', () => {
-    render(<HowItWorksSection />)
+    render(<HowItWorks />)
     
     const descriptions = [
       'howItWorks.steps.profile.description',
@@ -54,7 +54,7 @@ describe('HowItWorks Section', () => {
   })
 
   it('renders section title and description', () => {
-    render(<HowItWorksSection />)
+    render(<HowItWorks />)
     
     expect(screen.getByText('howItWorks.title')).toBeInTheDocument()
     expect(screen.getByText('howItWorks.description')).toBeInTheDocument()

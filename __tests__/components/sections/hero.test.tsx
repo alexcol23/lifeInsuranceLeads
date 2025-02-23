@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { HeroSection } from '@/components/sections/hero'
+import { Hero } from '@/components/sections/hero'
 
 // Mock useToast hook
 jest.mock('@/hooks/use-toast', () => ({
@@ -10,13 +10,13 @@ jest.mock('@/hooks/use-toast', () => ({
 
 describe('Hero Section', () => {
   it('renders the main heading', () => {
-    render(<HeroSection />)
+    render(<Hero />)
     const heading = screen.getByText(/Find Your Perfect/i)
     expect(heading).toBeInTheDocument()
   })
 
   it('renders AI-related content', () => {
-    render(<HeroSection />)
+    render(<Hero />)
     const aiTag = screen.getByText(/AI-Powered Insurance Recommendations/i)
     const aiDescription = screen.getByText(/Let our AI analyze your profile/i)
     
@@ -25,7 +25,7 @@ describe('Hero Section', () => {
   })
 
   it('renders the lead capture form', () => {
-    render(<HeroSection />)
+    render(<Hero />)
     const nameInput = screen.getByLabelText(/Full Name/i)
     const emailInput = screen.getByLabelText(/Email Address/i)
     const phoneInput = screen.getByLabelText(/Phone Number/i)

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { FAQSection } from '@/components/sections/FAQ'
+import { FAQ } from '@/components/sections/faq'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -17,14 +17,14 @@ jest.mock('@/hooks/useTranslations', () => ({
 
 describe('FAQ Section', () => {
   it('renders section title and description', () => {
-    render(<FAQSection />)
+    render(<FAQ />)
     
     expect(screen.getByText('faq.title')).toBeInTheDocument()
     expect(screen.getByText('faq.description')).toBeInTheDocument()
   })
 
   it('renders all FAQ items', () => {
-    render(<FAQSection />)
+    render(<FAQ />)
     
     const faqKeys = [
       'faq.items.howWorks',

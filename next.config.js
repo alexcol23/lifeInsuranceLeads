@@ -6,7 +6,21 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['images.unsplash.com'],
+    domains: ['images.unsplash.com', 'upload.wikimedia.org'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.metlife.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.prudential.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.axa.com',
+      },
+    ],
   },
 };
 

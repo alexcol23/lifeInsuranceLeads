@@ -9,8 +9,7 @@
     "optional": "Opcional",
     "success": "¡Éxito!",
     "error": "Error",
-    "tryAgain": "Algo salió mal. Por favor intenta de nuevo.",
-    "downloadApp": "Descargar App"
+    "tryAgain": "Por favor, inténtalo de nuevo"
   },
   "navigation": {
     "about": "Acerca de",
@@ -250,6 +249,43 @@
       "next": "Siguiente Paso",
       "previous": "Anterior",
       "submit": "Obtener Recomendaciones"
+    },
+    "results": {
+      "title": "Tus Recomendaciones Personalizadas",
+      "description": "Hemos analizado tu perfil y seleccionado las mejores opciones de cobertura que se adaptan a tus necesidades.",
+      "disclaimer": "* Las cotizaciones son aproximadas y pueden variar según la evaluación final de la aseguradora",
+      "cards": {
+        "viewDetails": "Ver Detalles"
+      },
+      "comparison": {
+        "title": "Compara los Planes",
+        "selectPlans": "Selecciona hasta 2 planes para comparar:",
+        "features": {
+          "feature": "Característica",
+          "price": "Precio",
+          "coverage": "Cobertura",
+          "policyType": "Tipo de Póliza",
+          "additionalBenefits": "Beneficios Adicionales"
+        }
+      },
+      "cta": {
+        "title": "¿No estás seguro de cuál elegir?",
+        "description": "Habla con un asesor ahora y recibe una guía personalizada",
+        "scheduleCall": "Agendar una Consulta Gratuita",
+        "chatExpert": "Chatear con un Experto"
+      },
+      "cards": {
+        "viewDetails": "Ver Detalles",
+        "benefits": {
+          "death": "Cobertura por fallecimiento",
+          "terminalIllness": "Pago anticipado por enfermedad terminal",
+          "savings": "Opción de ahorro e inversión",
+          "disability": "Beneficio por invalidez total",
+          "investment": "Fondo de inversión personalizado",
+          "guaranteed": "Renovación garantizada",
+          "convertible": "Convertible a seguro permanente"
+        }
+      }
     }
   },
   "benefits": {

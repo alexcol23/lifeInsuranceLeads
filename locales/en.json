@@ -9,8 +9,7 @@
     "optional": "Optional",
     "success": "Success!",
     "error": "Error",
-    "tryAgain": "Something went wrong. Please try again.",
-    "downloadApp": "Download App"
+    "tryAgain": "Please try again"
   },
   "navigation": {
     "about": "About",
@@ -170,6 +169,31 @@
       "insurancePurpose": {
         "title": "Insurance Purpose",
         "description": "What do you need insurance for?"
+      }
+    },
+    "results": {
+      "title": "Your Personalized Recommendations",
+      "description": "We've analyzed your profile and selected the best coverage options that match your needs.",
+      "disclaimer": "* Quotes are approximate and may vary based on final insurer evaluation",
+      "cards": {
+        "viewDetails": "View Details"
+      },
+      "comparison": {
+        "title": "Compare Plans",
+        "selectPlans": "Select up to 2 plans to compare:",
+        "features": {
+          "feature": "Feature",
+          "price": "Price",
+          "coverage": "Coverage",
+          "policyType": "Policy Type",
+          "additionalBenefits": "Additional Benefits"
+        }
+      },
+      "cta": {
+        "title": "Not sure which to choose?",
+        "description": "Talk to an advisor now and get personalized guidance",
+        "scheduleCall": "Schedule a Free Consultation",
+        "chatExpert": "Chat with an Expert"
       }
     }
   },

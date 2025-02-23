@@ -33,10 +33,12 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, ClipboardEdit, Brain, User2, Building2, UserCircle2 } from 'lucide-react';
+import { Loader2, ClipboardEdit, Brain, User2, Building2, UserCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { formSchema, FormValues, incomeRanges, insurancePurposes } from '@/types/form';
 import { FormStepper } from '@/components/form/FormStepper';
 import { SelectCard } from '@/components/form/SelectCard';
+import { useRouter } from 'next/navigation';
+import { getRecommendations } from '@/services/recommendations';
 
 const employeeRanges = [
   { value: '1-20', label: '1-20', icon: '👥' },
@@ -49,6 +51,7 @@ export default function GetRecommendations() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const stepKeys = {
     contactInfo: 'recommendations.steps.contactInfo',
@@ -72,19 +75,25 @@ export default function GetRecommendations() {
       phone: '',
       email: '',
     },
+    mode: "onTouched"
   });
 
   const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true);
+    console.log('Submitting form with data:', data);
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      setIsSubmitting(true);
+      // Llamar al servicio de recomendaciones
+      const recommendations = await getRecommendations(data);
+      console.log('Got recommendations:', recommendations);
       
-      toast({
-        title: t('common.success'),
-        description: t('common.tryAgain'),
-      });
+      // Guardar las recomendaciones en localStorage para la siguiente página
+      localStorage.setItem('recommendations', JSON.stringify(recommendations));
+      console.log('Saved to localStorage, redirecting...');
       
+      // Redirigir a la página de recomendaciones
+      window.location.href = '/recommendations';
     } catch (error) {
+      console.error('Error getting recommendations:', error);
       toast({
         title: t('common.error'),
         description: t('common.tryAgain'),
@@ -95,25 +104,27 @@ export default function GetRecommendations() {
     }
   };
 
+  const handleSubmit = async () => {
+    console.log('Handle submit called');
+    const formData = form.getValues();
+    await onSubmit(formData);
+  };
+
   const nextStep = () => {
-    const fieldsPerStep = {
+    const fieldsPerStep: Record<number, (keyof FormValues)[]> = {
       1: ['fullName', 'phone', 'email'],
       2: ['age', 'maritalStatus', 'income'],
       3: ['insurancePurpose']
     };
 
-    const currentFields = fieldsPerStep[step as keyof typeof fieldsPerStep];
-
-    const isValid = currentFields.every(field => {
-      const value = form.getValues(field as keyof FormValues);
-      return value !== undefined && value !== '';
+    const currentFields = fieldsPerStep[step];
+    
+    // Solo validar los campos del paso actual
+    form.trigger(currentFields).then((isValid) => {
+      if (isValid) {
+        setStep(prev => Math.min(prev + 1, 3));
+      }
     });
-
-    if (isValid) {
-      setStep(prev => Math.min(prev + 1, 3));
-    } else {
-      form.trigger(currentFields as (keyof FormValues)[]);
-    }
   };
 
   const prevStep = () => {
@@ -144,7 +155,7 @@ export default function GetRecommendations() {
             </CardHeader>
             <CardContent>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
                   <AnimatePresence mode="wait">
                     {step === 1 && (
                       <motion.div
@@ -434,37 +445,49 @@ export default function GetRecommendations() {
                     )}
                   </AnimatePresence>
 
-                  <div className="flex justify-between pt-4">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={prevStep}
-                      disabled={step === 1}
-                      className="border-gray-200 hover:bg-gray-50"
-                    >
-                      {t('common.previous')}
-                    </Button>
-
-                    {step < 3 ? (
-                      <Button 
-                        type="button" 
-                        onClick={nextStep}
-                        className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600 transition-all"
-                      >
-                        {t('common.next')}
-                      </Button>
-                    ) : (
-                      <Button 
-                        type="submit" 
+                  <div className="flex justify-between mt-8">
+                    {step > 1 && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={prevStep}
                         disabled={isSubmitting}
-                        className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600 transition-all"
                       >
-                        {isSubmitting && (
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        )}
-                        {t('common.submit')}
+                        <ChevronLeft className="mr-2 h-4 w-4" />
+                        {t('common.previous')}
                       </Button>
                     )}
+                    <div className="ml-auto">
+                      {step < 3 ? (
+                        <Button
+                          type="button"
+                          onClick={nextStep}
+                          disabled={isSubmitting}
+                          className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600"
+                        >
+                          {t('common.nextStep')}
+                          <ChevronRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      ) : (
+                        <Button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600"
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              {t('common.processing')}
+                            </>
+                          ) : (
+                            <>
+                              {t('common.submit')}
+                              <ChevronRight className="ml-2 h-4 w-4" />
+                            </>
+                          )}
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </form>
               </Form>

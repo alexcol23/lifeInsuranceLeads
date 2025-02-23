@@ -19,6 +19,121 @@
 }
 
 @layer base {
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  body {
+    @apply antialiased bg-background text-foreground overflow-x-hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Optimización de imágenes */
+  img {
+    @apply max-w-full h-auto object-contain;
+    content-visibility: auto;
+  }
+
+  /* Ajustes de botones para móviles */
+  button, .button {
+    @apply touch-manipulation px-4 py-2 whitespace-nowrap text-center;
+    min-height: 44px;
+    max-width: 100%;
+  }
+
+  /* Ajustes de cards para móviles */
+  .card {
+    @apply w-full max-w-full overflow-visible rounded-2xl relative;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 231, 235, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  /* Contenedor responsivo */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Contenedor principal con espacio para header fijo */
+  .main-content {
+    @apply pt-[80px] sm:pt-[80px]; /* Altura del header */
+  }
+
+  /* Hero section responsivo */
+  .hero-section {
+    @apply relative min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] bg-cover bg-center bg-no-repeat;
+    background-attachment: scroll;
+  }
+
+  /* Ajustes de grid para cards */
+  .cards-grid {
+    @apply grid gap-4 sm:gap-6 w-full;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    contain: layout style;
+  }
+
+  /* Logos de aseguradoras */
+  .insurance-logo {
+    @apply w-auto h-10 sm:h-12 md:h-16 object-contain mx-auto;
+    max-width: 160px;
+    aspect-ratio: auto;
+    loading: lazy;
+  }
+
+  /* Optimizaciones para texto */
+  .text-content {
+    @apply max-w-full break-words;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  /* Ajustes para botón principal */
+  .main-cta {
+    @apply w-full sm:w-auto text-base sm:text-lg font-semibold py-3 px-6;
+    max-width: min(100%, 320px);
+  }
+}
+
+@layer utilities {
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -62,23 +177,5 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 142.1 76.2% 36.3%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
   }
 }

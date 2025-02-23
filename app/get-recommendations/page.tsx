@@ -255,19 +255,35 @@ export default function GetRecommendations() {
                             render={({ field }) => (
                               <FormItem>
                                 <FormLabel>{t('recommendations.cards.maritalStatus.title')}</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger>
-                                      <SelectValue placeholder={t('recommendations.cards.maritalStatus.description')} />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="single">{t('recommendations.cards.maritalStatus.options.single')}</SelectItem>
-                                    <SelectItem value="married">{t('recommendations.cards.maritalStatus.options.married')}</SelectItem>
-                                    <SelectItem value="divorced">{t('recommendations.cards.maritalStatus.options.divorced')}</SelectItem>
-                                    <SelectItem value="widowed">{t('recommendations.cards.maritalStatus.options.widowed')}</SelectItem>
-                                  </SelectContent>
-                                </Select>
+                                <FormControl>
+                                  <RadioGroup
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                    className="grid grid-cols-2 gap-4"
+                                  >
+                                    {[
+                                      { value: 'single', label: t('recommendations.cards.maritalStatus.options.single'), icon: '👤' },
+                                      { value: 'married', label: t('recommendations.cards.maritalStatus.options.married'), icon: '💑' },
+                                      { value: 'divorced', label: t('recommendations.cards.maritalStatus.options.divorced'), icon: '💔' },
+                                      { value: 'widowed', label: t('recommendations.cards.maritalStatus.options.widowed'), icon: '💝' },
+                                    ].map((status) => (
+                                      <FormItem key={status.value}>
+                                        <FormControl>
+                                          <RadioGroupItem
+                                            value={status.value}
+                                            className="peer sr-only"
+                                          />
+                                        </FormControl>
+                                        <FormLabel className="flex flex-col items-center justify-between rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer transition-all">
+                                          <span className="text-2xl mb-2">{status.icon}</span>
+                                          <span className="text-sm font-medium leading-none text-center">
+                                            {status.label}
+                                          </span>
+                                        </FormLabel>
+                                      </FormItem>
+                                    ))}
+                                  </RadioGroup>
+                                </FormControl>
                                 <FormMessage />
                               </FormItem>
                             )}

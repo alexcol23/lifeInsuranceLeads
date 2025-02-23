@@ -31,6 +31,7 @@ export interface InsurancePlan {
   additionalBenefits: InsuranceBenefit[];
   score: number; // Score de compatibilidad con el perfil del usuario (0-100)
   recommended: boolean; // Si es uno de los planes más recomendados
+  applicationUrl?: string; // URL opcional para aplicar al plan
 }
 
 export interface RecommendationsResponse {

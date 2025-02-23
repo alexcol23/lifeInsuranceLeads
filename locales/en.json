@@ -55,10 +55,29 @@
     }
   },
   "blog": {
-    "title": "Latest Posts",
-    "description": "Stay updated with our latest insights and news",
-    "readMore": "Read more",
-    "viewAll": "View all posts"
+    "title": "Latest Insurance Insights",
+    "description": "Expert advice and guides to help you make informed insurance decisions",
+    "readMore": "Read More",
+    "posts": {
+      "insuranceTypes": {
+        "title": "Understanding Life Insurance Types",
+        "excerpt": "Learn about the different types of life insurance and which one might be right for you.",
+        "date": "March 15, 2024",
+        "readTime": "5 min read"
+      },
+      "coverageCalculation": {
+        "title": "How Much Coverage Do You Need?",
+        "excerpt": "A comprehensive guide to calculating the right amount of life insurance coverage for your situation.",
+        "date": "March 10, 2024",
+        "readTime": "7 min read"
+      },
+      "youngFamilies": {
+        "title": "Life Insurance for Young Families",
+        "excerpt": "Why young families should consider life insurance and how to get started.",
+        "date": "March 5, 2024",
+        "readTime": "6 min read"
+      }
+    }
   },
   "footer": {
     "company": {
@@ -193,7 +212,7 @@
     }
   },
   "benefits": {
-    "title": "Why Choose InsurMatch AI",
+    "title": "Why Choose TuSeguroIdeal AI",
     "description": "Experience the power of AI-driven insurance recommendations with our comprehensive platform",
     "items": {
       "aiAnalysis": {

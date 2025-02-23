@@ -59,10 +59,29 @@
     }
   },
   "blog": {
-    "title": "Últimas Publicaciones",
-    "description": "Mantente actualizado con nuestras últimas novedades",
-    "readMore": "Leer más",
-    "viewAll": "Ver todas las publicaciones"
+    "title": "Últimas Novedades en Seguros",
+    "description": "Consejos de expertos y guías para ayudarte a tomar decisiones informadas sobre seguros",
+    "readMore": "Leer Más",
+    "posts": {
+      "insuranceTypes": {
+        "title": "Entendiendo los Tipos de Seguro de Vida",
+        "excerpt": "Aprende sobre los diferentes tipos de seguro de vida y cuál podría ser el adecuado para ti.",
+        "date": "15 de marzo de 2024",
+        "readTime": "5 min de lectura"
+      },
+      "coverageCalculation": {
+        "title": "¿Cuánta Cobertura Necesitas?",
+        "excerpt": "Una guía completa para calcular la cantidad correcta de cobertura de seguro de vida para tu situación.",
+        "date": "10 de marzo de 2024",
+        "readTime": "7 min de lectura"
+      },
+      "youngFamilies": {
+        "title": "Seguro de Vida para Familias Jóvenes",
+        "excerpt": "Por qué las familias jóvenes deberían considerar un seguro de vida y cómo empezar.",
+        "date": "5 de marzo de 2024",
+        "readTime": "6 min de lectura"
+      }
+    }
   },
   "footer": {
     "company": {
@@ -263,7 +282,7 @@
     }
   },
   "benefits": {
-    "title": "¿Por qué elegir InsurMatch AI?",
+    "title": "¿Por qué elegir TuSeguroIdeal AI?",
     "description": "Experimenta el poder de las recomendaciones de seguros impulsadas por IA con nuestra plataforma integral",
     "items": {
       "aiAnalysis": {

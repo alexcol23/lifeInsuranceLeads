@@ -9,8 +9,14 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'LeadsBolt - Secure Your Family\'s Future',
-  description: 'Get personalized life insurance recommendations tailored to your needs.',
+  title: 'TuSeguroIdeal AI - Asegura el Futuro de tu Familia',
+  description: 'Obtén recomendaciones personalizadas de seguros de vida adaptadas a tus necesidades.',
+  keywords: 'seguro de vida, recomendaciones de seguros, IA, seguros personalizados, TuSeguroIdeal AI',
+  openGraph: {
+    title: 'TuSeguroIdeal AI - Asegura el Futuro de tu Familia',
+    description: 'Obtén recomendaciones personalizadas de seguros de vida adaptadas a tus necesidades.',
+    siteName: 'TuSeguroIdeal AI',
+  },
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 'use client';
 
-import { Hero } from '@/components/sections/Hero';
+import { Hero } from '@/components/sections/hero';
 import { Benefits } from '@/components/sections/benefits';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { BlogSection } from '@/components/sections/BlogSection';

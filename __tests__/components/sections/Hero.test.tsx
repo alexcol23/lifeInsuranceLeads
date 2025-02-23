@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { HeroSection } from '@/components/sections/Hero'
+import { HeroSection } from '@/components/sections/hero'
 
 // Mock useToast hook
 jest.mock('@/hooks/use-toast', () => ({

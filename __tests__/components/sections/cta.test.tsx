@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { CTASection } from '@/components/sections/CTA'
+import { CTA } from '@/components/sections/CTA'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -17,7 +17,7 @@ jest.mock('@/hooks/useTranslations', () => ({
 
 describe('CTA Section', () => {
   it('renders all text elements', () => {
-    render(<CTASection />)
+    render(<CTA />)
     
     expect(screen.getByText('cta.title')).toBeInTheDocument()
     expect(screen.getByText('cta.description')).toBeInTheDocument()
@@ -26,10 +26,10 @@ describe('CTA Section', () => {
   })
 
   it('renders the action button', () => {
-    render(<CTASection />)
+    render(<CTA />)
     
-    const button = screen.getByRole('button', { name: 'cta.button' })
+    const button = screen.getByRole('button', { name: /cta.button/i })
     expect(button).toBeInTheDocument()
-    expect(button).toHaveClass('bg-white', 'text-purple-600')
+    expect(button).toHaveClass('bg-white text-purple-600')
   })
 })

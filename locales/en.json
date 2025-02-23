@@ -19,8 +19,9 @@
     "contact": "Contact",
     "benefits": "Benefits",
     "howItWorks": "How It Works",
-    "blog": "Blog",
-    "faq": "FAQ"
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "blog": "Blog"
   },
   "header": {
     "menu": "Open main menu",
@@ -115,62 +116,30 @@
       "submit": "Get Recommendations"
     },
     "steps": {
+      "contactInfo": "Contact Information",
       "personalInfo": "Personal Information",
       "coverageNeeds": "Coverage Needs"
     },
     "cards": {
+      "fullName": {
+        "title": "Full Name",
+        "description": "Enter your full name"
+      },
+      "phone": {
+        "title": "Phone",
+        "description": "Enter your phone number"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Enter your email address"
+      },
       "age": {
         "title": "Age",
-        "description": "Your age helps us determine the most suitable coverage options and rates.",
-        "placeholder": "Enter your age"
-      },
-      "gender": {
-        "title": "Gender",
-        "description": "Insurance rates can vary based on gender due to different life expectancy factors.",
-        "options": {
-          "male": "Male",
-          "female": "Female"
-        }
-      },
-      "smoker": {
-        "title": "Smoking Status",
-        "description": "Being a smoker can affect your insurance premiums.",
-        "options": {
-          "yes": "Yes",
-          "no": "No"
-        }
-      },
-      "health": {
-        "title": "Health Condition",
-        "description": "Your overall health status helps determine coverage options.",
-        "options": {
-          "excellent": "Excellent",
-          "good": "Good",
-          "fair": "Fair",
-          "poor": "Poor"
-        }
-      },
-      "income": {
-        "title": "Annual Income",
-        "description": "Your income helps us suggest appropriate coverage amounts.",
-        "prefix": "$",
-        "placeholder": "Enter your annual income",
-        "options": {
-          "under-25k": "Under $25,000",
-          "25k-50k": "$25,000 - $50,000",
-          "50k-75k": "$50,000 - $75,000",
-          "75k-100k": "$75,000 - $100,000",
-          "over-100k": "Over $100,000"
-        }
-      },
-      "dependents": {
-        "title": "Number of Dependents",
-        "description": "People who rely on your financial support",
-        "placeholder": "Enter number of dependents"
+        "description": "Enter your age"
       },
       "maritalStatus": {
         "title": "Marital Status",
-        "description": "Select your current marital status",
+        "description": "Select your marital status",
         "options": {
           "single": "Single",
           "married": "Married",
@@ -178,36 +147,29 @@
           "widowed": "Widowed"
         }
       },
-      "preexistingCondition": {
-        "title": "Pre-existing Medical Conditions",
-        "description": "Help us provide accurate recommendations by sharing any pre-existing medical conditions",
-        "placeholder": "Please provide details of your condition",
-        "options": {
-          "yes": "Yes",
-          "no": "No"
-        }
+      "hasDependents": {
+        "title": "Do You Have Dependents?",
+        "description": "People who depend on you financially"
+      },
+      "income": {
+        "title": "Annual Income Range",
+        "description": "Select your income range"
+      },
+      "isSmoker": {
+        "title": "Are You a Smoker?",
+        "description": "Indicate if you are an active smoker"
+      },
+      "hasPreexistingCondition": {
+        "title": "Do You Have Pre-existing Conditions?",
+        "description": "Diagnosed medical conditions"
+      },
+      "preexistingConditionDetails": {
+        "title": "Condition Details",
+        "description": "Briefly describe your medical conditions"
       },
       "insurancePurpose": {
-        "title": "Primary Purpose for Life Insurance",
-        "description": "Select the main reason why you're looking for life insurance",
-        "options": {
-          "family": {
-            "title": "Family Protection",
-            "description": "Ensure your family's financial security"
-          },
-          "mortgage": {
-            "title": "Mortgage Coverage",
-            "description": "Cover your mortgage payments"
-          },
-          "business": {
-            "title": "Business Protection",
-            "description": "Protect your business interests"
-          },
-          "retirement": {
-            "title": "Retirement Planning",
-            "description": "Secure your retirement future"
-          }
-        }
+        "title": "Insurance Purpose",
+        "description": "What do you need insurance for?"
       }
     }
   },

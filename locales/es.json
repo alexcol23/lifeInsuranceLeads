@@ -21,10 +21,7 @@
     "howItWorks": "Cómo Funciona",
     "testimonials": "Testimonios",
     "faq": "Preguntas Frecuentes",
-    "benefits": "Beneficios",
-    "howItWorks": "Cómo Funciona",
-    "blog": "Blog",
-    "faq": "FAQ"
+    "blog": "Blog"
   },
   "header": {
     "menu": "Abrir menú principal",
@@ -112,12 +109,24 @@
   },
   "form": {
     "steps": {
+      "contactInfo": "Información de Contacto",
       "personalInfo": "Información Personal",
-      "personalInfoDescription": "Ayúdanos a entender mejor tu perfil",
       "insuranceNeeds": "Necesidades de Seguro",
       "insuranceNeedsDescription": "Dinos qué tipo de cobertura necesitas"
     },
     "fields": {
+      "fullName": {
+        "label": "Nombre Completo",
+        "placeholder": "Ingresa tu nombre completo"
+      },
+      "phone": {
+        "label": "Teléfono",
+        "placeholder": "Ingresa tu número de teléfono"
+      },
+      "email": {
+        "label": "Correo Electrónico",
+        "placeholder": "Ingresa tu correo electrónico"
+      },
       "age": {
         "label": "Edad",
         "placeholder": "Ingresa tu edad"
@@ -151,22 +160,22 @@
       },
       "hasDependents": {
         "label": "¿Tienes dependientes?",
-        "description": "Personas que dependen de tu apoyo financiero"
+        "description": "Personas que dependen económicamente de ti"
       },
       "isSmoker": {
         "label": "¿Eres fumador?",
-        "description": "Esto afecta las tarifas del seguro"
+        "description": "Indica si eres fumador activo"
       },
       "hasPreexistingCondition": {
-        "label": "¿Condiciones médicas preexistentes?",
-        "description": "Ayúdanos a proporcionar recomendaciones precisas"
+        "label": "¿Tienes condiciones preexistentes?",
+        "description": "Condiciones médicas diagnosticadas"
       },
       "preexistingConditionDetails": {
-        "label": "Por favor proporciona detalles (opcional)",
-        "placeholder": "Ingresa los detalles de la condición"
+        "label": "Detalles de condiciones",
+        "placeholder": "Describe brevemente tus condiciones médicas"
       },
       "insurancePurpose": {
-        "label": "Propósito Principal del Seguro de Vida",
+        "label": "Propósito del seguro",
         "options": {
           "family": "Protección Familiar",
           "mortgage": "Cobertura de Hipoteca",
@@ -181,98 +190,60 @@
     "title": "La Forma Inteligente de Elegir un Seguro",
     "description": "Deja que nuestra IA analice tu perfil y recomiende los mejores planes de seguro de vida adaptados a tus necesidades únicas.",
     "steps": {
+      "contactInfo": "Información de Contacto",
       "personalInfo": "Información Personal",
       "coverageNeeds": "Necesidades de Cobertura"
     },
     "cards": {
+      "fullName": {
+        "title": "Nombre Completo",
+        "description": "Ingresa tu nombre completo"
+      },
+      "phone": {
+        "title": "Teléfono",
+        "description": "Ingresa tu número de teléfono"
+      },
+      "email": {
+        "title": "Correo Electrónico",
+        "description": "Ingresa tu correo electrónico"
+      },
       "age": {
         "title": "Edad",
-        "description": "Tu edad nos ayuda a determinar las opciones de cobertura y tarifas más adecuadas."
-      },
-      "gender": {
-        "title": "Género",
-        "description": "Las tarifas de seguro pueden variar según el género debido a diferentes factores de esperanza de vida.",
-        "options": {
-          "male": "Masculino",
-          "female": "Femenino"
-        }
-      },
-      "smoker": {
-        "title": "Estado de Fumador",
-        "description": "Ser fumador puede afectar tus primas de seguro.",
-        "options": {
-          "yes": "Sí",
-          "no": "No"
-        }
-      },
-      "health": {
-        "title": "Estado de Salud",
-        "description": "Tu estado de salud general ayuda a determinar las opciones de cobertura.",
-        "options": {
-          "excellent": "Excelente",
-          "good": "Bueno",
-          "fair": "Regular",
-          "poor": "Malo"
-        }
-      },
-      "income": {
-        "title": "Ingreso Anual",
-        "description": "Tus ingresos nos ayudan a sugerir montos de cobertura apropiados.",
-        "prefix": "$",
-        "placeholder": "Ingresa tu ingreso anual",
-        "options": {
-          "under-25k": "Menos de $25,000",
-          "25k-50k": "$25,000 - $50,000",
-          "50k-75k": "$50,000 - $75,000",
-          "75k-100k": "$75,000 - $100,000",
-          "over-100k": "Más de $100,000"
-        }
-      },
-      "dependents": {
-        "title": "Dependientes",
-        "description": "Número de personas que dependen de tus ingresos.",
-        "suffix": "dependientes"
+        "description": "Ingresa tu edad"
       },
       "maritalStatus": {
         "title": "Estado Civil",
-        "description": "Selecciona tu estado civil actual",
+        "description": "Selecciona tu estado civil",
         "options": {
-          "single": "Soltero/a",
-          "married": "Casado/a",
-          "divorced": "Divorciado/a",
-          "widowed": "Viudo/a"
+          "single": "Soltero(a)",
+          "married": "Casado(a)",
+          "divorced": "Divorciado(a)",
+          "widowed": "Viudo(a)"
         }
       },
-      "preexistingCondition": {
-        "title": "Condiciones Médicas Preexistentes",
-        "description": "Ayúdanos a proporcionar recomendaciones precisas compartiendo cualquier condición médica preexistente",
-        "placeholder": "Por favor proporciona detalles de tu condición",
-        "options": {
-          "yes": "Sí",
-          "no": "No"
-        }
+      "hasDependents": {
+        "title": "¿Tienes Dependientes?",
+        "description": "Personas que dependen económicamente de ti"
+      },
+      "income": {
+        "title": "Rango de Ingresos Anuales",
+        "description": "Selecciona tu rango de ingresos"
+      },
+      "isSmoker": {
+        "title": "¿Eres Fumador?",
+        "description": "Indica si eres fumador activo"
+      },
+      "hasPreexistingCondition": {
+        "title": "¿Tienes Condiciones Preexistentes?",
+        "description": "Condiciones médicas diagnosticadas"
+      },
+      "preexistingConditionDetails": {
+        "title": "Detalles de Condiciones",
+        "description": "Describe brevemente tus condiciones médicas"
       },
       "insurancePurpose": {
-        "title": "Propósito Principal del Seguro de Vida",
-        "description": "Selecciona la razón principal por la que buscas un seguro de vida",
-        "options": {
-          "family": {
-            "title": "Protección Familiar",
-            "description": "Asegura la estabilidad financiera de tu familia"
-          },
-          "mortgage": {
-            "title": "Cobertura de Hipoteca",
-            "description": "Cubre los pagos de tu hipoteca"
-          },
-          "business": {
-            "title": "Protección de Negocio",
-            "description": "Protege tus intereses comerciales"
-          },
-          "retirement": {
-            "title": "Planificación de Retiro",
-            "description": "Asegura tu futuro en el retiro"
-          }
-        }
+        "title": "Propósito del Seguro",
+        "description": "¿Para qué necesitas el seguro?"
       }
     },
     "navigation": {

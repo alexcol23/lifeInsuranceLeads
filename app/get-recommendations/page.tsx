@@ -19,6 +19,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from '@/components/ui/form';
 import {
   Select,
@@ -32,7 +33,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, ClipboardEdit, Brain, User2, Building2 } from 'lucide-react';
+import { Loader2, ClipboardEdit, Brain, User2, Building2, UserCircle2 } from 'lucide-react';
 import { formSchema, FormValues, incomeRanges, insurancePurposes } from '@/types/form';
 import { FormStepper } from '@/components/form/FormStepper';
 import { SelectCard } from '@/components/form/SelectCard';
@@ -50,11 +51,13 @@ export default function GetRecommendations() {
   const { toast } = useToast();
 
   const stepKeys = {
+    contactInfo: 'recommendations.steps.contactInfo',
     personalInfo: 'recommendations.steps.personalInfo',
     coverageNeeds: 'recommendations.steps.coverageNeeds'
   } as const;
 
   const steps = [
+    { title: t(stepKeys.contactInfo), icon: UserCircle2 },
     { title: t(stepKeys.personalInfo), icon: User2 },
     { title: t(stepKeys.coverageNeeds), icon: Building2 },
   ];
@@ -65,6 +68,9 @@ export default function GetRecommendations() {
       hasDependents: false,
       isSmoker: false,
       hasPreexistingCondition: false,
+      fullName: '',
+      phone: '',
+      email: '',
     },
   });
 
@@ -90,9 +96,13 @@ export default function GetRecommendations() {
   };
 
   const nextStep = () => {
-    const currentFields = step === 1 
-      ? ['age', 'maritalStatus', 'income']
-      : ['insurancePurpose'];
+    const fieldsPerStep = {
+      1: ['fullName', 'phone', 'email'],
+      2: ['age', 'maritalStatus', 'income'],
+      3: ['insurancePurpose']
+    };
+
+    const currentFields = fieldsPerStep[step as keyof typeof fieldsPerStep];
 
     const isValid = currentFields.every(field => {
       const value = form.getValues(field as keyof FormValues);
@@ -100,10 +110,14 @@ export default function GetRecommendations() {
     });
 
     if (isValid) {
-      setStep(2);
+      setStep(prev => Math.min(prev + 1, 3));
     } else {
       form.trigger(currentFields as (keyof FormValues)[]);
     }
+  };
+
+  const prevStep = () => {
+    setStep(prev => Math.max(prev - 1, 1));
   };
 
   return (
@@ -115,16 +129,18 @@ export default function GetRecommendations() {
           transition={{ duration: 0.5 }}
           className="space-y-8"
         >
-          <FormStepper currentStep={step} steps={steps} />
+          <div className="text-center">
+            <FormStepper currentStep={step} steps={steps} />
+            <CardDescription className="mt-4 text-gray-500 max-w-xl mx-auto">
+              {t('recommendations.description')}
+            </CardDescription>
+          </div>
 
           <Card className="border-none shadow-xl bg-white/80 backdrop-blur-sm">
             <CardHeader className="space-y-1">
               <CardTitle className="text-2xl text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 {t('recommendations.title')}
               </CardTitle>
-              <CardDescription className="text-center text-gray-500">
-                {t('recommendations.description')}
-              </CardDescription>
             </CardHeader>
             <CardContent>
               <Form {...form}>
@@ -133,6 +149,74 @@ export default function GetRecommendations() {
                     {step === 1 && (
                       <motion.div
                         key="step1"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="space-y-4"
+                      >
+                        <div className="grid gap-4">
+                          <FormField
+                            control={form.control}
+                            name="fullName"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{t('recommendations.cards.fullName.title')}</FormLabel>
+                                <FormControl>
+                                  <Input 
+                                    placeholder={t('recommendations.cards.fullName.description')}
+                                    className="border-gray-200 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition-colors bg-white/50 backdrop-blur-sm"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{t('recommendations.cards.phone.title')}</FormLabel>
+                                <FormControl>
+                                  <Input 
+                                    type="tel"
+                                    placeholder={t('recommendations.cards.phone.description')}
+                                    className="border-gray-200 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition-colors bg-white/50 backdrop-blur-sm"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{t('recommendations.cards.email.title')}</FormLabel>
+                                <FormControl>
+                                  <Input 
+                                    type="email"
+                                    placeholder={t('recommendations.cards.email.description')}
+                                    className="border-gray-200 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition-colors bg-white/50 backdrop-blur-sm"
+                                    {...field}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {step === 2 && (
+                      <motion.div
+                        key="step2"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
@@ -149,8 +233,8 @@ export default function GetRecommendations() {
                                   <Input 
                                     type="number" 
                                     placeholder={t('recommendations.cards.age.description')} 
-                                    className="bg-white/50 border-gray-200 focus:border-purple-500 transition-colors"
-                                    {...field} 
+                                    className="border-gray-200 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition-colors bg-white/50 backdrop-blur-sm"
+                                    {...field}
                                   />
                                 </FormControl>
                                 <FormMessage />
@@ -166,7 +250,7 @@ export default function GetRecommendations() {
                                 <FormLabel>{t('recommendations.cards.maritalStatus.title')}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
-                                    <SelectTrigger className="bg-white/50 border-gray-200 focus:border-purple-500 transition-colors">
+                                    <SelectTrigger>
                                       <SelectValue placeholder={t('recommendations.cards.maritalStatus.description')} />
                                     </SelectTrigger>
                                   </FormControl>
@@ -185,67 +269,16 @@ export default function GetRecommendations() {
 
                         <FormField
                           control={form.control}
-                          name="gender"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{t('recommendations.cards.gender.title')}</FormLabel>
-                              <div className="grid grid-cols-2 gap-3">
-                                <SelectCard
-                                  key="male"
-                                  icon="👨"
-                                  title={t('recommendations.cards.gender.options.male')}
-                                  selected={field.value === 'male'}
-                                  onClick={() => field.onChange('male')}
-                                  description=""
-                                />
-                                <SelectCard
-                                  key="female"
-                                  icon="👩"
-                                  title={t('recommendations.cards.gender.options.female')}
-                                  selected={field.value === 'female'}
-                                  onClick={() => field.onChange('female')}
-                                  description=""
-                                />
-                              </div>
-                              <p className="text-sm text-gray-500 mt-2">
-                                {t('recommendations.cards.gender.description')}
-                              </p>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="income"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{t('recommendations.cards.income.title')}</FormLabel>
-                              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                {incomeRanges.map((range) => (
-                                  <SelectCard
-                                    key={range.value}
-                                    icon={<Building2 className="w-8 h-8 text-purple-600" />}
-                                    title={t(`recommendations.cards.income.options.${range.value}`)}
-                                    selected={field.value === range.value}
-                                    onClick={() => field.onChange(range.value)}
-                                    description=""
-                                  />
-                                ))}
-                              </div>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
                           name="hasDependents"
                           render={({ field }) => (
-                            <FormItem className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white/50">
-                              <div>
-                                <FormLabel className="text-base">{t('recommendations.cards.dependents.title')}</FormLabel>
-                                <p className="text-sm text-gray-500">{t('recommendations.cards.dependents.description')}</p>
+                            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                              <div className="space-y-0.5">
+                                <FormLabel className="text-base">
+                                  {t('recommendations.cards.hasDependents.title')}
+                                </FormLabel>
+                                <FormDescription>
+                                  {t('recommendations.cards.hasDependents.description')}
+                                </FormDescription>
                               </div>
                               <FormControl>
                                 <Switch
@@ -256,26 +289,64 @@ export default function GetRecommendations() {
                             </FormItem>
                           )}
                         />
+
+                        <FormField
+                          control={form.control}
+                          name="income"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>{t('recommendations.cards.income.title')}</FormLabel>
+                              <FormControl>
+                                <RadioGroup
+                                  onValueChange={field.onChange}
+                                  defaultValue={field.value}
+                                  className="grid grid-cols-2 gap-4"
+                                >
+                                  {incomeRanges.map((range) => (
+                                    <FormItem key={range.value}>
+                                      <FormControl>
+                                        <RadioGroupItem
+                                          value={range.value}
+                                          className="peer sr-only"
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="flex flex-col items-center justify-between rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                                        <span className="text-sm font-medium leading-none">
+                                          {range.label}
+                                        </span>
+                                      </FormLabel>
+                                    </FormItem>
+                                  ))}
+                                </RadioGroup>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
                       </motion.div>
                     )}
 
-                    {step === 2 && (
+                    {step === 3 && (
                       <motion.div
-                        key="step2"
-                        initial={{ opacity: 0, x: 20 }}
+                        key="step3"
+                        initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        className="space-y-6"
+                        exit={{ opacity: 0, x: 20 }}
+                        className="space-y-4"
                       >
-                        <div className="space-y-4">
+                        <div className="grid gap-4">
                           <FormField
                             control={form.control}
                             name="isSmoker"
                             render={({ field }) => (
-                              <FormItem className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white/50">
-                                <div>
-                                  <FormLabel className="text-base">{t('recommendations.cards.smoker.title')}</FormLabel>
-                                  <p className="text-sm text-gray-500">{t('recommendations.cards.smoker.description')}</p>
+                              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                                <div className="space-y-0.5">
+                                  <FormLabel className="text-base">
+                                    {t('recommendations.cards.isSmoker.title')}
+                                  </FormLabel>
+                                  <FormDescription>
+                                    {t('recommendations.cards.isSmoker.description')}
+                                  </FormDescription>
                                 </div>
                                 <FormControl>
                                   <Switch
@@ -291,10 +362,14 @@ export default function GetRecommendations() {
                             control={form.control}
                             name="hasPreexistingCondition"
                             render={({ field }) => (
-                              <FormItem className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white/50">
-                                <div>
-                                  <FormLabel className="text-base">{t('recommendations.cards.preexistingCondition.title')}</FormLabel>
-                                  <p className="text-sm text-gray-500">{t('recommendations.cards.preexistingCondition.description')}</p>
+                              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                                <div className="space-y-0.5">
+                                  <FormLabel className="text-base">
+                                    {t('recommendations.cards.hasPreexistingCondition.title')}
+                                  </FormLabel>
+                                  <FormDescription>
+                                    {t('recommendations.cards.hasPreexistingCondition.description')}
+                                  </FormDescription>
                                 </div>
                                 <FormControl>
                                   <Switch
@@ -307,94 +382,87 @@ export default function GetRecommendations() {
                           />
 
                           {form.watch('hasPreexistingCondition') && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                            >
-                              <FormField
-                                control={form.control}
-                                name="preexistingConditionDetails"
-                                render={({ field }) => (
-                                  <FormItem>
-                                    <FormLabel>{t('recommendations.cards.preexistingCondition.placeholder')}</FormLabel>
-                                    <FormControl>
-                                      <Input 
-                                        {...field} 
-                                        placeholder={t('recommendations.cards.preexistingCondition.placeholder')}
-                                        className="bg-white/50 border-gray-200 focus:border-purple-500 transition-colors"
-                                      />
-                                    </FormControl>
-                                    <FormMessage />
-                                  </FormItem>
-                                )}
-                              />
-                            </motion.div>
+                            <FormField
+                              control={form.control}
+                              name="preexistingConditionDetails"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>{t('recommendations.cards.preexistingConditionDetails.title')}</FormLabel>
+                                  <FormControl>
+                                    <Input 
+                                      placeholder={t('recommendations.cards.preexistingConditionDetails.description')}
+                                      className="border-gray-200 shadow-sm focus:border-purple-500 focus:ring-purple-500 transition-colors bg-white/50 backdrop-blur-sm"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
                           )}
-                        </div>
 
-                        <FormField
-                          control={form.control}
-                          name="insurancePurpose"
-                          render={({ field }) => (
-                            <FormItem className="space-y-3">
-                              <FormLabel>{t('recommendations.cards.insurancePurpose.title')}</FormLabel>
-                              <p className="text-sm text-gray-500">
-                                {t('recommendations.cards.insurancePurpose.description')}
-                              </p>
-                              <div className="grid grid-cols-2 gap-4">
-                                {insurancePurposes.map((purpose) => (
-                                  <SelectCard
-                                    key={purpose.value}
-                                    icon={purpose.icon}
-                                    title={t(`recommendations.cards.insurancePurpose.options.${purpose.value}.title`)}
-                                    description={t(`recommendations.cards.insurancePurpose.options.${purpose.value}.description`)}
-                                    selected={field.value === purpose.value}
-                                    onClick={() => field.onChange(purpose.value)}
-                                  />
-                                ))}
-                              </div>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="insurancePurpose"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{t('recommendations.cards.insurancePurpose.title')}</FormLabel>
+                                <FormControl>
+                                  <RadioGroup
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                    className="grid grid-cols-2 gap-4"
+                                  >
+                                    {insurancePurposes.map((purpose) => (
+                                      <SelectCard
+                                        key={purpose.value}
+                                        title={purpose.label}
+                                        description={purpose.description}
+                                        icon={purpose.icon}
+                                        selected={field.value === purpose.value}
+                                        onClick={() => field.onChange(purpose.value)}
+                                      />
+                                    ))}
+                                  </RadioGroup>
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
 
-                  <div className="flex justify-between pt-6">
-                    {step === 2 ? (
-                      <>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={() => setStep(1)}
-                          className="border-gray-200 hover:bg-gray-50"
-                        >
-                          {t('recommendations.navigation.previous')}
-                        </Button>
-                        <Button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                              {t('common.processing')}
-                            </>
-                          ) : (
-                            t('recommendations.navigation.submit')
-                          )}
-                        </Button>
-                      </>
-                    ) : (
-                      <Button
-                        type="button"
+                  <div className="flex justify-between pt-4">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={prevStep}
+                      disabled={step === 1}
+                      className="border-gray-200 hover:bg-gray-50"
+                    >
+                      {t('common.previous')}
+                    </Button>
+
+                    {step < 3 ? (
+                      <Button 
+                        type="button" 
                         onClick={nextStep}
-                        className="ml-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                        className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600 transition-all"
                       >
-                        {t('recommendations.navigation.next')}
+                        {t('common.next')}
+                      </Button>
+                    ) : (
+                      <Button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600 transition-all"
+                      >
+                        {isSubmitting && (
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        )}
+                        {t('common.submit')}
                       </Button>
                     )}
                   </div>

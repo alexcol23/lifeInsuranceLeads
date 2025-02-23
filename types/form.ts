@@ -1,14 +1,19 @@
 import { z } from 'zod';
 
 export const formSchema = z.object({
-  // Paso 1
+  // Paso 1: Información de contacto
+  fullName: z.string().min(1, 'Full name is required'),
+  phone: z.string().min(1, 'Phone is required'),
+  email: z.string().email('Invalid email address'),
+
+  // Paso 2: Información personal
   age: z.string().min(1, 'Age is required'),
   gender: z.string().optional(),
   maritalStatus: z.string().min(1, 'Marital status is required'),
   hasDependents: z.boolean(),
   income: z.string().min(1, 'Income range is required'),
   
-  // Paso 2
+  // Paso 3: Información de cobertura
   isSmoker: z.boolean(),
   hasPreexistingCondition: z.boolean(),
   preexistingConditionDetails: z.string().optional(),
@@ -26,8 +31,28 @@ export const incomeRanges = [
 ] as const;
 
 export const insurancePurposes = [
-  { value: 'family', icon: '👨‍👩‍👧‍👦', label: 'Family Protection' },
-  { value: 'mortgage', icon: '🏠', label: 'Mortgage Coverage' },
-  { value: 'business', icon: '💼', label: 'Business Protection' },
-  { value: 'retirement', icon: '🌴', label: 'Retirement Planning' }
+  { 
+    value: 'family', 
+    icon: '👨‍👩‍👧‍👦', 
+    label: 'Family Protection',
+    description: 'Ensure your family\'s financial security and protect their future'
+  },
+  { 
+    value: 'mortgage', 
+    icon: '🏠', 
+    label: 'Mortgage Coverage',
+    description: 'Protect your home and ensure mortgage payments are covered'
+  },
+  { 
+    value: 'business', 
+    icon: '💼', 
+    label: 'Business Protection',
+    description: 'Safeguard your business interests and ensure business continuity'
+  },
+  { 
+    value: 'retirement', 
+    icon: '🌴', 
+    label: 'Retirement Planning',
+    description: 'Secure your retirement future and maintain your lifestyle'
+  }
 ] as const;

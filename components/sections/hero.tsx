@@ -16,7 +16,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
+    <section id="hero" className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
       {/* Background Image with subtle overlay */}
       <div className="absolute inset-0 z-0">
         <Image

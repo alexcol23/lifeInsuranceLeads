@@ -18,7 +18,6 @@ const footerSections: FooterSection[] = [
     id: 'company',
     title: 'Compañía',
     items: [
-      { id: 'about', label: 'Acerca de', href: '/about' },
       { id: 'blog', label: 'Blog', href: '/blog' },
       { id: 'careers', label: 'Carreras', href: '/careers' },
       { id: 'press', label: 'Prensa', href: '/press' },
@@ -56,42 +55,25 @@ const footerSections: FooterSection[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
-          <div className="pb-6">
-            <div className="space-y-8 xl:col-span-1">
-              <Image src="/logo.svg" width={32} height={32} alt="Tu Seguro Ideal" />
-              <p className="text-sm leading-6 text-gray-600">
-                Encuentra el seguro perfecto para ti y tu familia.
-              </p>
+    <footer className="bg-white border-t border-gray-200">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+          {/* Logo y descripción */}
+          <div className="md:col-span-4">
+            <div className="flex items-center gap-2">
+              <Image src="/logo.svg" width={40} height={40} alt="TuSeguroIdeal AI" />
+              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                TuSeguroIdeal AI
+              </span>
             </div>
+            <p className="mt-4 text-sm leading-6 text-gray-600">
+              Encuentra el seguro perfecto para ti y tu familia.
+            </p>
           </div>
-        </nav>
-        <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-          <div className="md:grid md:grid-cols-2 md:gap-8">
-            {footerSections.slice(0, 2).map((section) => (
-              <div key={section.id}>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                  {section.title}
-                </h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {section.items.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="md:grid md:grid-cols-2 md:gap-8">
-            {footerSections.slice(2).map((section) => (
+
+          {/* Enlaces */}
+          <div className="md:col-span-8 grid grid-cols-2 gap-8 md:grid-cols-4">
+            {footerSections.map((section) => (
               <div key={section.id}>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">
                   {section.title}
@@ -112,9 +94,11 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+
+        {/* Copyright */}
+        <div className="mt-12 border-t border-gray-900/10 pt-8">
           <p className="text-xs leading-5 text-gray-500">
-            &copy; {new Date().getFullYear()} Tu Seguro Ideal. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} TuSeguroIdeal AI. Todos los derechos reservados.
           </p>
         </div>
       </div>

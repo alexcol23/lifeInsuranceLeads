@@ -57,7 +57,7 @@ export function BlogSection() {
   const { t } = useTranslations();
 
   return (
-    <section id="blog" className="py-20 bg-gray-50">
+    <section id="blog" className="py-24 sm:py-32 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">

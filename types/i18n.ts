@@ -30,6 +30,7 @@ export type TranslationKey =
   | 'common.processing'
   | 'common.optional'
   | 'common.success'
+  | 'common.learnMore'
   | 'recommendations.results.title'
   | 'recommendations.results.description'
   | 'recommendations.results.disclaimer'

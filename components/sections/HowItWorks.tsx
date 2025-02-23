@@ -73,7 +73,7 @@ export function HowItWorks() {
   const { t } = useTranslations();
 
   return (
-    <section id="howItWorks" className="py-20 bg-white">
+    <section id="how-it-works" className="py-24 sm:py-32">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-6">

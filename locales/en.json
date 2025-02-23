@@ -1,6 +1,6 @@
 {
   "common": {
-    "getStarted": "Get Started",
+    "getStarted": "Get AI-Powered Recommendations",
     "next": "Next",
     "nextStep": "Next Step",
     "previous": "Previous",
@@ -9,7 +9,8 @@
     "optional": "Optional",
     "success": "Success!",
     "error": "Error",
-    "tryAgain": "Please try again"
+    "tryAgain": "Please try again",
+    "learnMore": "Learn More"
   },
   "navigation": {
     "about": "About",

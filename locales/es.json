@@ -1,6 +1,6 @@
 {
   "common": {
-    "getStarted": "Comenzar",
+    "getStarted": "Obtén Recomendaciones con IA",
     "next": "Siguiente",
     "nextStep": "Siguiente Paso",
     "previous": "Anterior",
@@ -9,7 +9,8 @@
     "optional": "Opcional",
     "success": "¡Éxito!",
     "error": "Error",
-    "tryAgain": "Por favor, inténtalo de nuevo"
+    "tryAgain": "Por favor intenta de nuevo",
+    "learnMore": "Conoce Más"
   },
   "navigation": {
     "about": "Acerca de",

@@ -72,7 +72,7 @@ export function Benefits() {
   const { t } = useTranslations();
 
   return (
-    <section id="benefits" className="py-24 bg-white">
+    <section id="benefits" className="py-24 sm:py-32">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <motion.h2 

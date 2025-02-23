@@ -1,60 +1,27 @@
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+'use client';
 
-interface ProgressiveImageProps {
-  src: string;
-  alt: string;
-  className?: string;
-  width?: number;
-  height?: number;
-  priority?: boolean;
-  quality?: number;
-  sizes?: string;
-  fill?: boolean;
+import Image, { ImageProps } from 'next/image';
+import { memo } from 'react';
+
+export interface ProgressiveImageProps extends ImageProps {
+  placeholder?: 'blur' | 'empty';
 }
 
-export function ProgressiveImage({
+export const ProgressiveImage = memo(function ProgressiveImage({
   src,
   alt,
-  className,
-  width,
-  height,
-  priority = false,
-  quality = 75,
-  sizes,
-  fill = false,
+  className = '',
+  placeholder = 'empty',
+  ...props
 }: ProgressiveImageProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentSrc, setCurrentSrc] = useState(src);
-
-  useEffect(() => {
-    // Reset estado cuando cambia la fuente
-    setIsLoading(true);
-    setCurrentSrc(src);
-  }, [src]);
-
   return (
-    <div className={cn(
-      'relative overflow-hidden',
-      isLoading && 'animate-pulse bg-gray-200',
-      className
-    )}>
-      <Image
-        src={currentSrc}
-        alt={alt}
-        width={width}
-        height={height}
-        quality={quality}
-        sizes={sizes}
-        fill={fill}
-        priority={priority}
-        className={cn(
-          'duration-700 ease-in-out',
-          isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0',
-        )}
-        onLoadingComplete={() => setIsLoading(false)}
-      />
-    </div>
+    <Image
+      src={src}
+      alt={alt}
+      className={`transition-[filter] duration-300 ${className}`}
+      placeholder={placeholder}
+      loading={props.priority ? 'eager' : 'lazy'}
+      {...props}
+    />
   );
-}
+});

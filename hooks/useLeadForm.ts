@@ -1,18 +1,18 @@
-import { useState } from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react';
 
 interface LeadFormData {
-  email: string
-  name?: string
-  phone?: string
+  email: string;
+  name?: string;
+  phone?: string;
 }
 
 interface UseLeadFormReturn {
-  formData: LeadFormData
-  isLoading: boolean
-  error: string | null
-  handleSubmit: (e: React.FormEvent) => Promise<void>
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  resetForm: () => void
+  formData: LeadFormData;
+  isLoading: boolean;
+  error: string | null;
+  handleSubmit: (e: FormEvent) => Promise<void>;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  resetForm: () => void;
 }
 
 export const useLeadForm = (): UseLeadFormReturn => {
@@ -20,22 +20,22 @@ export const useLeadForm = (): UseLeadFormReturn => {
     email: '',
     name: '',
     phone: '',
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
     try {
       const response = await fetch('/api/submit-lead', {
@@ -44,28 +44,28 @@ export const useLeadForm = (): UseLeadFormReturn => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form')
+        throw new Error('Failed to submit form');
       }
 
-      resetForm()
+      resetForm();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      setError(err instanceof Error ? err.message : 'Something went wrong');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const resetForm = () => {
     setFormData({
       email: '',
       name: '',
       phone: '',
-    })
-    setError(null)
-  }
+    });
+    setError(null);
+  };
 
   return {
     formData,
@@ -74,5 +74,5 @@ export const useLeadForm = (): UseLeadFormReturn => {
     handleSubmit,
     handleChange,
     resetForm,
-  }
-}
+  };
+};

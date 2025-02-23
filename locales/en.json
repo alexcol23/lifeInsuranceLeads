@@ -82,29 +82,33 @@
   "footer": {
     "company": {
       "title": "Company",
-      "about": "About Us",
+      "about": "About",
+      "blog": "Blog",
       "careers": "Careers",
       "press": "Press"
     },
-    "legal": {
-      "title": "Legal",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Use",
-      "cookies": "Cookie Policy"
-    },
     "support": {
       "title": "Support",
-      "help": "Help Center",
-      "contact": "Contact",
-      "faq": "FAQ"
+      "pricing": "Pricing",
+      "documentation": "Documentation",
+      "guides": "Guides",
+      "api-status": "API Status"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies",
+      "disclaimer": "Disclaimer"
     },
     "social": {
       "title": "Social",
       "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
       "facebook": "Facebook",
       "instagram": "Instagram"
-    },
-    "copyright": " 2025 Life Insurance Leads. All rights reserved."
+    }
   },
   "recommendations": {
     "title": "The Smart Way to Choose Insurance",

@@ -57,8 +57,10 @@ const TestimonialCard = ({ image, nameKey, roleKey, contentKey, index }: Testimo
             />
           ))}
         </div>
-        <blockquote className="text-lg text-gray-700 mb-6">
-          "{t(contentKey)}"
+        <blockquote className="mt-4">
+          <p className="text-lg font-medium text-gray-900">
+            &ldquo;{t(contentKey)}&rdquo;
+          </p>
         </blockquote>
         <div className="flex items-center">
           <div className="flex-shrink-0 mr-4">

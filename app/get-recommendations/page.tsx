@@ -82,18 +82,14 @@ export default function GetRecommendations() {
     console.log('Submitting form with data:', data);
     try {
       setIsSubmitting(true);
-      // Llamar al servicio de recomendaciones
-      const recommendations = await getRecommendations(data);
-      console.log('Got recommendations:', recommendations);
       
-      // Guardar las recomendaciones en localStorage para la siguiente página
-      localStorage.setItem('recommendations', JSON.stringify(recommendations));
-      console.log('Saved to localStorage, redirecting...');
+      // Guardar los datos del formulario en localStorage
+      localStorage.setItem('insuranceFormData', JSON.stringify(data));
       
-      // Redirigir a la página de recomendaciones
-      window.location.href = '/recommendations';
+      // Usar el router de Next.js para la navegación del lado del cliente
+      router.push('/recommendations');
     } catch (error) {
-      console.error('Error getting recommendations:', error);
+      console.error('Error submitting form:', error);
       toast({
         title: t('common.error'),
         description: t('common.tryAgain'),

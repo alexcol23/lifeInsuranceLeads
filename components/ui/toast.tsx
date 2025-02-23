@@ -97,7 +97,7 @@ ToastDescription.displayName = ToastPrimitives.Description.displayName
 
 type ToastProps = React.ComponentPropsWithoutRef<typeof ToastRoot>
 
-type ToastActionElement = React.ReactElement<typeof ToastAction>
+type ToastActionElement = React.ReactElement<typeof ToastPrimitives.Action>
 
 export {
   type ToastProps,
@@ -108,5 +108,4 @@ export {
   ToastTitle,
   ToastDescription,
   ToastClose,
-  type ToastAction,
 }

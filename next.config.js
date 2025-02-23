@@ -1,26 +1,69 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
-    unoptimized: true,
-    domains: ['images.unsplash.com', 'upload.wikimedia.org'],
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.metlife.com',
+        hostname: 'upload.wikimedia.org',
       },
       {
         protocol: 'https',
-        hostname: 'www.prudential.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.axa.com',
+        hostname: 'images.unsplash.com',
       },
     ],
+    minimumCacheTTL: 60,
+    formats: ['image/avif', 'image/webp'],
+  },
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es'],
+  },
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+  headers: async () => [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'X-Frame-Options',
+          value: 'DENY',
+        },
+        {
+          key: 'X-Content-Type-Options',
+          value: 'nosniff',
+        },
+        {
+          key: 'X-XSS-Protection',
+          value: '1; mode=block',
+        },
+        {
+          key: 'Strict-Transport-Security',
+          value: 'max-age=31536000; includeSubDomains',
+        },
+        {
+          key: 'Referrer-Policy',
+          value: 'strict-origin-when-cross-origin',
+        },
+        {
+          key: 'Permissions-Policy',
+          value: 'camera=(), microphone=(), geolocation=()',
+        },
+      ],
+    },
+  ],
+  webpack(config, { dev, isServer }) {
+    // Configuraciones de webpack existentes
+    return config;
   },
 };
 

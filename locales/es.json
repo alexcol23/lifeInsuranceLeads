@@ -82,29 +82,33 @@
   "footer": {
     "company": {
       "title": "Compañía",
-      "about": "Sobre Nosotros",
+      "about": "Acerca de",
+      "blog": "Blog",
       "careers": "Carreras",
       "press": "Prensa"
     },
-    "legal": {
-      "title": "Legal",
-      "privacy": "Política de Privacidad",
-      "terms": "Términos de Uso",
-      "cookies": "Política de Cookies"
-    },
     "support": {
       "title": "Soporte",
-      "help": "Centro de Ayuda",
-      "contact": "Contacto",
-      "faq": "Preguntas Frecuentes"
+      "pricing": "Precios",
+      "documentation": "Documentación",
+      "guides": "Guías",
+      "api-status": "Estado de la API"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "cookies": "Cookies",
+      "disclaimer": "Aviso Legal"
     },
     "social": {
       "title": "Social",
       "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
       "facebook": "Facebook",
       "instagram": "Instagram"
-    },
-    "copyright": " 2025 Life Insurance Leads. Todos los derechos reservados."
+    }
   },
   "form": {
     "steps": {

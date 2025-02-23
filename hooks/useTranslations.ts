@@ -23,6 +23,15 @@ type PathValue<T, P extends Path<T>> =
 
 export type TranslationKey = Path<typeof en>;
 
+type FooterSection = 'company' | 'support' | 'legal' | 'social';
+
+export const getFooterKey = (section: FooterSection, key?: string): TranslationKey => {
+  if (key) {
+    return `footer.${section}.${key}` as TranslationKey;
+  }
+  return `footer.${section}.title` as TranslationKey;
+};
+
 export function useTranslations() {
   const { language } = useLanguage();
   const translations = language === 'es' ? require('@/locales/es.json') : require('@/locales/en.json');
@@ -30,7 +39,7 @@ export function useTranslations() {
   const t = (key: TranslationKey): string => {
     const keys = key.split('.');
     let current: any = translations;
-    
+
     for (const k of keys) {
       if (current[k] === undefined) {
         console.warn(`Translation key not found: ${key}`);
@@ -38,7 +47,7 @@ export function useTranslations() {
       }
       current = current[k];
     }
-    
+
     if (typeof current !== 'string') {
       console.warn(`Translation key "${key}" does not point to a string`);
       return key;

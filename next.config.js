@@ -31,36 +31,48 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   webpack: (config, { dev, isServer }) => {
-    // Optimizaciones solo para producción
-    if (!dev) {
-      // Optimización de chunks
+    // Optimizar chunks
+    if (!dev && !isServer) {
       config.optimization = {
         ...config.optimization,
         splitChunks: {
           chunks: 'all',
           minSize: 20000,
-          maxSize: 70000,
+          maxSize: 244000,
+          minChunks: 1,
+          maxAsyncRequests: 30,
+          maxInitialRequests: 30,
           cacheGroups: {
-            default: false,
-            vendors: false,
-            commons: {
-              name: 'commons',
-              chunks: 'all',
-              minChunks: 2,
+            defaultVendors: {
+              test: /[\\/]node_modules[\\/]/,
+              priority: -10,
               reuseExistingChunk: true,
             },
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendor',
-              chunks: 'all',
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true,
             },
           },
         },
-        runtimeChunk: {
-          name: 'runtime',
-        },
       };
     }
+
+    // Agregar soporte para archivos MP4
+    config.module.rules.push({
+      test: /\.(mp4)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next/static/media/',
+            outputPath: 'static/media/',
+            name: '[name].[hash].[ext]',
+          },
+        },
+      ],
+    });
+
     return config;
   },
   headers() {

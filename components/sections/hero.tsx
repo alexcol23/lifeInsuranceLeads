@@ -7,7 +7,7 @@ import { Shield, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-export function Hero() {
+export function HeroSection() {
   const { t } = useTranslations();
   const router = useRouter();
 
@@ -54,8 +54,10 @@ export function Hero() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight"
             >
-              {t('hero.title')}
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">{t('hero.titleHighlight')}</span>
+              {t('hero.title')}{' '}
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                {t('hero.titleHighlight')}
+              </span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -76,12 +78,14 @@ export function Hero() {
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-14 px-8 text-lg font-semibold transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg"
               >
                 {t('hero.cta')}
+                <Shield className="ml-2 h-5 w-5" />
               </Button>
               <p className="text-sm text-white/70 mt-4">
                 {t('hero.ctaDescription')}
               </p>
             </motion.div>
           </motion.div>
+
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -101,3 +105,6 @@ export function Hero() {
     </section>
   );
 }
+
+// Exportar también como Hero para mantener compatibilidad
+export { HeroSection as Hero };

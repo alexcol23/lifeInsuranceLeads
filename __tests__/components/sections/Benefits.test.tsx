@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { BenefitsSection } from '@/components/sections/Benefits'
+import { Benefits } from '@/components/sections/benefits'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -18,7 +18,7 @@ jest.mock('framer-motion', () => ({
 
 describe('Benefits Section', () => {
   it('renders all benefit cards', () => {
-    render(<BenefitsSection />)
+    render(<Benefits />)
     
     // Verificar que se renderizan todos los beneficios
     const benefitTitles = [
@@ -35,7 +35,7 @@ describe('Benefits Section', () => {
   })
 
   it('renders AI-related content', () => {
-    render(<BenefitsSection />)
+    render(<Benefits />)
     
     const heading = screen.getByText(/The Smart Way to Choose Insurance/i)
     const description = screen.getByText(/Experience the power of AI-driven insurance recommendations/i)
@@ -45,7 +45,7 @@ describe('Benefits Section', () => {
   })
 
   it('renders benefit icons', () => {
-    render(<BenefitsSection />)
+    render(<Benefits />)
     
     const cards = screen.getAllByTestId('benefit-card')
     expect(cards).toHaveLength(4)
@@ -57,7 +57,7 @@ describe('Benefits Section', () => {
   })
 
   it('renders with correct styling', () => {
-    render(<BenefitsSection />)
+    render(<Benefits />)
     
     const cards = screen.getAllByTestId('benefit-card')
     cards.forEach(card => {

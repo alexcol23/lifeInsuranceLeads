@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { CTA } from '@/components/sections/CTA'
+import { CTA } from '@/components/sections/cta'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({

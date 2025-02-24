@@ -106,7 +106,25 @@ export default function GetRecommendations() {
     await onSubmit(formData);
   };
 
-  const nextStep = () => {
+  const handleNextStep = async () => {
+    // Si estamos en el primer paso y tenemos los datos de contacto completos
+    if (step === 1) {
+      const formValues = form.getValues();
+      if (formValues.fullName && formValues.phone && formValues.email) {
+        // Capturar lead de forma asíncrona sin esperar la respuesta
+        fetch('/api/captureLead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formValues.fullName,
+            phone: formValues.phone,
+            email: formValues.email,
+          }),
+        }).catch(console.error); // Manejar errores silenciosamente
+      }
+    }
     const fieldsPerStep: Record<number, (keyof FormValues)[]> = {
       1: ['fullName', 'phone', 'email'],
       2: ['age', 'maritalStatus', 'income'],
@@ -473,7 +491,7 @@ export default function GetRecommendations() {
                       {step < 3 ? (
                         <Button
                           type="button"
-                          onClick={nextStep}
+                          onClick={handleNextStep}
                           disabled={isSubmitting}
                           className="bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:from-purple-700 hover:to-blue-600"
                         >

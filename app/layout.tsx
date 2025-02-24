@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ClientLayout } from '@/components/layout/ClientLayout';
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import { metadata } from './metadata';
 import './globals.css';
 
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ClientLayout>{children}</ClientLayout>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

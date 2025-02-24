@@ -1,0 +1,16 @@
+{
+  "name": "TuSeguroIdeal AI",
+  "short_name": "TuSeguroIdeal",
+  "description": "Encuentra el seguro de vida perfecto para ti con ayuda de IA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -4,9 +4,15 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from '@/hooks/useTranslations';
+import { useRouter } from 'next/navigation';
 
 export function CTA() {
   const { t } = useTranslations();
+  const router = useRouter();
+
+  const handleGetStarted = () => {
+    router.push('/get-recommendations');
+  };
 
   return (
     <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600">
@@ -28,6 +34,7 @@ export function CTA() {
               <Button
                 size="lg"
                 className="bg-white text-purple-600 hover:bg-white/90"
+                onClick={handleGetStarted}
               >
                 {t('cta.button' as const)}
                 <ArrowRight className="ml-2 h-5 w-5" />

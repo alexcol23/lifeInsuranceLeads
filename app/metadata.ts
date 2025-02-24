@@ -1,26 +1,35 @@
 import { Metadata } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://tuseguroideal.com';
-
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: 'Tu Seguro Ideal - Encuentra el seguro perfecto para ti',
-  description: 'Encuentra el seguro perfecto para ti y tu familia con nuestro servicio de recomendación personalizada.',
-  openGraph: {
-    title: 'Tu Seguro Ideal - Encuentra el seguro perfecto para ti',
-    description: 'Encuentra el seguro perfecto para ti y tu familia con nuestro servicio de recomendación personalizada.',
-    url: baseUrl,
-    siteName: 'Tu Seguro Ideal',
-    locale: 'es_CO',
-    type: 'website',
+  title: 'TuSeguroIdeal AI - Encuentra el Seguro de Vida Perfecto',
+  description: 'Encuentra el seguro de vida perfecto para ti con ayuda de IA. Análisis personalizado gratuito en 2 minutos.',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Tu Seguro Ideal - Encuentra el seguro perfecto para ti',
-    description: 'Encuentra el seguro perfecto para ti y tu familia con nuestro servicio de recomendación personalizada.',
+  themeColor: '#7C3AED',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'TuSeguroIdeal AI',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
   },
   robots: {
     index: true,
     follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_CO',
+    url: 'https://tuseguroideal.ai',
+    title: 'TuSeguroIdeal AI - Encuentra el Seguro de Vida Perfecto',
+    description: 'Encuentra el seguro de vida perfecto para ti con ayuda de IA. Análisis personalizado gratuito en 2 minutos.',
+    siteName: 'TuSeguroIdeal AI',
   },
 };

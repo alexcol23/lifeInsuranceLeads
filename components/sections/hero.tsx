@@ -16,7 +16,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="hero-section relative flex items-center py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden">
+    <section className="hero-section relative flex items-center py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden header-spacing">
       {/* Background Image with optimized loading */}
       <div className="absolute inset-0 z-0">
         <Image

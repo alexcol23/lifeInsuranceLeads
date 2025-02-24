@@ -72,6 +72,17 @@
     font-weight: 700;
     @apply tracking-tight;
   }
+
+  /* Header spacing */
+  .header-spacing {
+    padding-top: 80px; /* Altura del header */
+  }
+
+  /* Ajuste para secciones que necesitan el espacio del header */
+  .min-h-screen {
+    min-height: calc(100vh - 80px);
+    margin-top: 80px;
+  }
 }
 
 @layer components {
